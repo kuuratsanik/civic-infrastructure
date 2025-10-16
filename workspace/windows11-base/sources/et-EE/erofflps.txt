@@ -1,6 +1,0 @@
-﻿Microsofti privaatsusavaldus 
-Microsofti privaatsusavaldust saate vaadata saidilt: https://go.microsoft.com/fwlink/?LinkId=521839
-
-Kui tarkvara on käivitatud, siis saate lingitud nõudmisi lugeda, kleepides edasilingi oma brauseri aknasse.
-
-EULAID:RS3_RP_1_PR-ERR_ET-EE
