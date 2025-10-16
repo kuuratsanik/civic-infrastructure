@@ -1,0 +1,48 @@
+{
+  "Synthesia": {
+    "APIKey": "YOUR-SYNTHESIA-API-KEY-HERE",
+    "Endpoint": "https://api.synthesia.io/v2",
+    "Note": "Get API key from: https://www.synthesia.io/features/api"
+  },
+  "OpenAI": {
+    "APIKey": "YOUR-OPENAI-API-KEY-HERE",
+    "Model": "gpt-4",
+    "Note": "For script generation. Get key from: https://platform.openai.com/api-keys"
+  },
+  "TikTok": {
+    "AccessToken": "YOUR-TIKTOK-ACCESS-TOKEN",
+    "Note": "Optional. For auto-posting. Get from: https://developers.tiktok.com/"
+  },
+  "BigBuy": {
+    "APIKey": "YOUR-BIGBUY-API-KEY",
+    "Endpoint": "https://api.bigbuy.eu",
+    "Note": "Get from: BigBuy Dashboard -> Integrations"
+  },
+  "Shopify": {
+    "StoreURL": "your-store.myshopify.com",
+    "APIKey": "YOUR-SHOPIFY-API-KEY",
+    "Password": "YOUR-SHOPIFY-PASSWORD",
+    "Note": "Get from: Shopify Admin -> Apps -> Develop apps"
+  },
+  "Avatars": {
+    "Default": "anna_costume1_cameraA",
+    "Alternatives": [
+      "james_costume1_cameraA",
+      "lily_costume1_cameraA",
+      "michael_costume1_cameraA"
+    ],
+    "Note": "See all avatars: https://www.synthesia.io/features/avatars"
+  },
+  "Voices": {
+    "English": "en-US-Neural2-C",
+    "German": "de-DE-Neural2-C",
+    "French": "fr-FR-Neural2-C",
+    "Note": "See all voices in Synthesia dashboard"
+  },
+  "Automation": {
+    "PostingTimes": ["07:30", "13:00", "20:00"],
+    "VideosPerDay": 3,
+    "MaxBudgetPerSample": 100
+  }
+}
+
