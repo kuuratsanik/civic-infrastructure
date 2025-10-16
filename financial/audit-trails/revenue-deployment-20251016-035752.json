@@ -1,0 +1,20 @@
+﻿{
+    "StreamsDeployed":  [
+                            "Cloud Services",
+                            "AI Services",
+                            "Digital Products",
+                            "Affiliate Marketing",
+                            "Sponsorship",
+                            "Content Creation",
+                            "Consulting"
+                        ],
+    "Timestamp":  {
+                      "value":  "\/Date(1760576272393)\/",
+                      "DisplayHint":  2,
+                      "DateTime":  "neljapäev, 16. oktoober 2025 03:57:52"
+                  },
+    "PotentialRevenue":  {
+                             "Min":  12000,
+                             "Max":  43000
+                         }
+}

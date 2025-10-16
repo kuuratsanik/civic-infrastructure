@@ -1,0 +1,23 @@
+{
+    "recommendations": [
+        "ms-vscode.powershell",
+        "editorconfig.editorconfig",
+        "streetsidesoftware.code-spell-checker",
+        "yzhang.markdown-all-in-one",
+        "bierner.markdown-emoji",
+        "davidanson.vscode-markdownlint",
+        "continue.continue",
+        "github.copilot",
+        "github.copilot-chat",
+        "ms-azuretools.vscode-docker",
+        "visualstudioexptteam.vscodeintellicode",
+        "gruntfuggly.todo-tree",
+        "eamodio.gitlens",
+        "mechatroner.rainbow-csv",
+        "usernamehw.errorlens",
+        "formulahendry.code-runner",
+        "vscode-icons-team.vscode-icons",
+        "pkief.material-icon-theme"
+    ],
+    "unwantedRecommendations": []
+}

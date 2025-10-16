@@ -1,0 +1,16 @@
+{
+    "action":  "iso_build",
+    "authorized_actions":  [
+                               "mount_wim",
+                               "apply_customizations",
+                               "unmount_wim",
+                               "create_iso",
+                               "hash_iso",
+                               "test_vm"
+                           ],
+    "issued_by":  "council.master",
+    "expires_at":  "2025-10-21T21:30:24Z",
+    "warrant_id":  "warrant-iso-test-001",
+    "issued_at":  "2025-10-14T21:30:24Z",
+    "proposal_id":  "proposal-test-iso-001"
+}

@@ -1,0 +1,15 @@
+{
+    "action":  "execute_ceremony",
+    "agent":  "council.civic",
+    "timestamp":  "2025-10-14T20:58:06Z",
+    "warrant_id":  "warrant-foundation-20251014-205755",
+    "packet_id":  "pkt-foundation-20251014-205755",
+    "result":  {
+                   "ceremony":  "01-foundation",
+                   "timestamp":  "2025-10-14T20:58:06Z",
+                   "error":  "The script \u0027Initialize-Foundation.ps1\u0027 cannot be run because it contains a \"#requires\" statement for running as Administrator. The current Windows PowerShell session is not running as Administrator. Start Windows PowerShell by  using the Run as Administrator option, and then try running the script again.",
+                   "warrant_id":  "warrant-foundation-20251014-205755",
+                   "duration_seconds":  0.0745952,
+                   "status":  "failed"
+               }
+}

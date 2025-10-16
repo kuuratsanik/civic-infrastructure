@@ -1,0 +1,47 @@
+{
+    "action":  "iso_build",
+    "agent":  "council.build",
+    "timestamp":  "2025-10-14T23:48:38Z",
+    "warrant_id":  "warrant-iso-test-001",
+    "packet_id":  "iso-build-simulation-20251014-234823",
+    "result":  {
+                   "message":  "ISO build workflow simulated successfully",
+                   "customizations":  {
+                                          "components_removed":  7,
+                                          "tweaks_applied":  2,
+                                          "registry_modified":  true
+                                      },
+                   "status":  "simulated_success",
+                   "duration_seconds":  1050,
+                   "size_gb":  5,
+                   "output_iso":  "workspace/output/Win11_Custom_Privacy_Simulation.iso",
+                   "hash":  "ABC123DEF456789012345678901234567890123456789012345678901234567",
+                   "phases":  [
+                                  {
+                                      "phase":  "mount_wim",
+                                      "status":  "simulated",
+                                      "duration":  60
+                                  },
+                                  {
+                                      "phase":  "apply_customizations",
+                                      "status":  "simulated",
+                                      "duration":  300
+                                  },
+                                  {
+                                      "phase":  "unmount_wim",
+                                      "status":  "simulated",
+                                      "duration":  180
+                                  },
+                                  {
+                                      "phase":  "create_iso",
+                                      "status":  "simulated",
+                                      "duration":  480
+                                  },
+                                  {
+                                      "phase":  "compute_hash",
+                                      "status":  "simulated",
+                                      "duration":  30
+                                  }
+                              ]
+               }
+}

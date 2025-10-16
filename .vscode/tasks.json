@@ -1,0 +1,137 @@
+﻿{
+    "version":  "2.0.0",
+    "tasks":  [
+                  {
+                      "label":  "Auto-Deploy: Ultimate",
+                      "problemMatcher":  [
+
+                                         ],
+                      "command":  "powershell.exe",
+                      "type":  "shell",
+                      "args":  [
+                                   "-ExecutionPolicy",
+                                   "Bypass",
+                                   "-File",
+                                   "${workspaceFolder}/AUTONOMOUS-DEPLOY-ULTIMATE.ps1"
+                               ],
+                      "presentation":  {
+                                           "panel":  "shared",
+                                           "showReuseMessage":  false,
+                                           "focus":  true,
+                                           "clear":  true,
+                                           "echo":  true,
+                                           "reveal":  "always"
+                                       },
+                      "group":  {
+                                    "kind":  "build",
+                                    "isDefault":  true
+                                }
+                  },
+                  {
+                      "label":  "Auto-Test: All Tests",
+                      "problemMatcher":  [
+                                             "$tsc",
+                                             "$eslint-compact"
+                                         ],
+                      "command":  "npm",
+                      "type":  "shell",
+                      "args":  [
+                                   "test"
+                               ],
+                      "presentation":  {
+                                           "reveal":  "always",
+                                           "panel":  "shared"
+                                       },
+                      "group":  "test"
+                  },
+                  {
+                      "label":  "Auto-Fix: All Issues",
+                      "problemMatcher":  [
+                                             "$eslint-compact"
+                                         ],
+                      "command":  "npm",
+                      "type":  "shell",
+                      "args":  [
+                                   "run",
+                                   "lint:fix"
+                               ],
+                      "presentation":  {
+                                           "reveal":  "always",
+                                           "panel":  "shared"
+                                       },
+                      "group":  "none"
+                  },
+                  {
+                      "label":  "Auto-Format: All Files",
+                      "problemMatcher":  [
+
+                                         ],
+                      "command":  "npm",
+                      "type":  "shell",
+                      "args":  [
+                                   "run",
+                                   "format"
+                               ],
+                      "presentation":  {
+                                           "reveal":  "always",
+                                           "panel":  "shared"
+                                       },
+                      "group":  "none"
+                  },
+                  {
+                      "label":  "Auto-Build: Production",
+                      "problemMatcher":  [
+                                             "$tsc"
+                                         ],
+                      "command":  "npm",
+                      "type":  "shell",
+                      "args":  [
+                                   "run",
+                                   "build"
+                               ],
+                      "presentation":  {
+                                           "reveal":  "always",
+                                           "panel":  "shared"
+                                       },
+                      "group":  "build"
+                  },
+                  {
+                      "group":  "none",
+                      "type":  "shell",
+                      "command":  "npm",
+                      "label":  "Auto-Watch: Development",
+                      "isBackground":  true,
+                      "args":  [
+                                   "run",
+                                   "dev"
+                               ],
+                      "presentation":  {
+                                           "reveal":  "always",
+                                           "panel":  "shared"
+                                       },
+                      "problemMatcher":  [
+
+                                         ]
+                  },
+                  {
+                      "label":  "AI: Activate All Features",
+                      "problemMatcher":  [
+
+                                         ],
+                      "command":  "powershell.exe",
+                      "type":  "shell",
+                      "args":  [
+                                   "-ExecutionPolicy",
+                                   "Bypass",
+                                   "-File",
+                                   "${workspaceFolder}/ACTIVATE-ULTIMATE-AUTOMATION.ps1"
+                               ],
+                      "presentation":  {
+                                           "panel":  "shared",
+                                           "reveal":  "always",
+                                           "clear":  true
+                                       },
+                      "group":  "none"
+                  }
+              ]
+}

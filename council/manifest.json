@@ -1,0 +1,116 @@
+{
+  "version": "1.0.0",
+  "council_id": "civic-infrastructure-council",
+  "created_at": "2025-10-14T20:00:00Z",
+  "workspace": "SVEN-DELL",
+  "roles": {
+    "master": {
+      "agent_id": "council.master",
+      "permissions": [
+        "dispatch_packets",
+        "sign_ceremonies",
+        "consume_warrants",
+        "arbitrate_conflicts",
+        "approve_esm_changes"
+      ],
+      "key_location": "council/keys/master.key",
+      "key_type": "TPM_backed"
+    },
+    "audit": {
+      "agent_id": "council.audit",
+      "permissions": [
+        "compute_hashes",
+        "anchor_merkle_roots",
+        "verify_signatures",
+        "generate_evidence_bundles"
+      ],
+      "key_location": "council/keys/audit.key",
+      "key_type": "DPAPI_protected"
+    },
+    "build": {
+      "agent_id": "council.build",
+      "permissions": [
+        "mount_wim",
+        "commit_wim",
+        "build_iso",
+        "hash_artifacts"
+      ],
+      "key_location": "council/keys/build.key",
+      "key_type": "DPAPI_protected"
+    },
+    "registry": {
+      "agent_id": "council.registry",
+      "permissions": [
+        "apply_tweak",
+        "snapshot_hive",
+        "restore_hive",
+        "verify_registry_state"
+      ],
+      "key_location": "council/keys/registry.key",
+      "key_type": "DPAPI_protected"
+    },
+    "driver": {
+      "agent_id": "council.driver",
+      "permissions": [
+        "add_driver",
+        "verify_signature",
+        "dedupe_driver",
+        "enforce_signed_only"
+      ],
+      "key_location": "council/keys/driver.key",
+      "key_type": "DPAPI_protected"
+    },
+    "civic": {
+      "agent_id": "council.civic",
+      "permissions": [
+        "execute_ceremonies",
+        "generate_manifests",
+        "manage_evidence_packs",
+        "coordinate_multi_agent"
+      ],
+      "key_location": "council/keys/civic.key",
+      "key_type": "DPAPI_protected"
+    }
+  },
+  "timelocks": {
+    "esm_disable": "30d",
+    "warrant_expiry_default": "7d",
+    "proposal_voting_period": "24h",
+    "emergency_cooldown": "7d"
+  },
+  "state": {
+    "ExtendedSecurity": 0,
+    "last_ceremony": null,
+    "total_ceremonies_executed": 0,
+    "total_warrants_issued": 0,
+    "total_proposals_approved": 0
+  },
+  "governance": {
+    "voting_threshold": 0.66,
+    "quorum_required": 0.5,
+    "multi_sig_required_for": [
+      "esm_enable",
+      "esm_disable",
+      "key_rotation",
+      "warrant_revocation"
+    ]
+  },
+  "integration": {
+    "civic_infrastructure_path": "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder",
+    "modules_imported": [
+      "CivicGovernance.psm1",
+      "EvidenceBundler.psm1",
+      "ManifestValidator.psm1"
+    ],
+    "ceremonies_available": [
+      "01-foundation",
+      "02-governance",
+      "03-operational-hygiene",
+      "04-performance-control",
+      "05-developer-cockpit",
+      "06-ui-ritual",
+      "07-observability",
+      "08-resilience"
+    ]
+  }
+}

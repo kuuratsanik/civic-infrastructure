@@ -1,0 +1,10 @@
+{
+    "expires_at":  "2025-10-21T20:57:55Z",
+    "authorized_actions":  [
+                               "execute_ceremony"
+                           ],
+    "issued_at":  "2025-10-14T20:57:55Z",
+    "ceremony":  "01-foundation",
+    "warrant_id":  "warrant-foundation-20251014-205755",
+    "proposal_id":  "prop-foundation-init"
+}

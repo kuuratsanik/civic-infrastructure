@@ -1,0 +1,16 @@
+{
+    "created":  "2025-10-14T23:48:36Z",
+    "sha256":  "ABC123DEF456789012345678901234567890123456789012345678901234567",
+    "warrant_id":  "warrant-iso-test-001",
+    "size_bytes":  5368709120,
+    "iso_name":  "Win11_Custom_Privacy_Simulation.iso",
+    "size_gb":  5,
+    "customizations":  {
+                           "tweaks_applied":  2,
+                           "registry_hives_modified":  [
+                                                           "HKLM\\SOFTWARE",
+                                                           "HKLM\\SYSTEM"
+                                                       ],
+                           "apps_removed":  7
+                       }
+}

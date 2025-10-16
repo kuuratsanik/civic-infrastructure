@@ -1,0 +1,2 @@
+{"action":"execute_ceremony","ts":"2025-10-14T20:58:06Z","agent":"civic","warrant":"warrant-foundation-20251014-205755","packet_id":"pkt-foundation-20251014-205755","status":"failed"}
+{"action":"iso_build_simulation","ts":"2025-10-14T23:48:38Z","agent":"build","warrant_id":"warrant-iso-test-001","packet_id":"iso-build-simulation-20251014-234823","status":"simulated_success"}

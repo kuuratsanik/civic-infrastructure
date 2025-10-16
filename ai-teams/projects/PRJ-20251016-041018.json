@@ -1,0 +1,50 @@
+﻿{
+    "assignedTeam":  "Consulting Delivery Team",
+    "jobType":  "Consulting",
+    "progress":  {
+                     "percentComplete":  0,
+                     "started":  null,
+                     "completed":  null
+                 },
+    "financials":  {
+                       "profitMargin":  99.900,
+                       "estimatedCost":  1.0,
+                       "budget":  1000,
+                       "estimatedProfit":  999.0,
+                       "hourlyRate":  100
+                   },
+    "projectId":  "PRJ-20251016-041018",
+    "description":  "PowerShell automation for Windows 11 customization - 10 hour project",
+    "status":  "ASSIGNED",
+    "client":  "Test Client",
+    "timestamp":  "2025-10-16T04:10:18.8639697+03:00",
+    "budget":  1000,
+    "teamAgents":  [
+                       {
+                           "Expertise":  "Strategy, Architecture",
+                           "Level":  3,
+                           "Role":  "Lead Consultant"
+                       },
+                       {
+                           "Expertise":  "Coding, Deployment",
+                           "Level":  2,
+                           "Role":  "Technical Implementation"
+                       },
+                       {
+                           "Expertise":  "Technical Writing",
+                           "Level":  1,
+                           "Role":  "Documentation Specialist"
+                       },
+                       {
+                           "Expertise":  "Testing, Validation",
+                           "Level":  2,
+                           "Role":  "Quality Assurance"
+                       },
+                       {
+                           "Expertise":  "Requirements, Updates",
+                           "Level":  2,
+                           "Role":  "Client Communication"
+                       }
+                   ],
+    "estimatedHours":  10
+}

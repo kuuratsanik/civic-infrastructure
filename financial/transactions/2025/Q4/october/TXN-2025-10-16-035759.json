@@ -1,0 +1,21 @@
+﻿{
+    "vatAmount":  170.0,
+    "taxYear":  2025,
+    "timestamp":  "2025-10-16T03:57:59.1714960+03:00",
+    "invoiceNumber":  "INV-2025-10-16-035759",
+    "description":  "AI Automation Consulting - 10 hours @ EUR 85/hr",
+    "category":  "Service Revenue",
+    "type":  "INCOME",
+    "amount":  850,
+    "transactionId":  "TXN-2025-10-16-035759",
+    "status":  "PENDING",
+    "currency":  "EUR",
+    "client":  {
+                   "email":  "client@techsolutions.com",
+                   "name":  "Tech Solutions Ltd",
+                   "taxId":  ""
+               },
+    "totalAmount":  1020.0,
+    "invoicePath":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\financial\\invoices\\2025\\INV-2025-10-16-035759.txt",
+    "vatRate":  0.2
+}

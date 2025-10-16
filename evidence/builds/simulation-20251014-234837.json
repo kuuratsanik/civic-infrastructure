@@ -1,0 +1,35 @@
+{
+    "phases":  {
+                   "unmount_wim":  {
+                                       "duration_seconds":  180,
+                                       "status":  "simulated"
+                                   },
+                   "apply_customizations":  {
+                                                "duration_seconds":  300,
+                                                "status":  "simulated"
+                                            },
+                   "mount_wim":  {
+                                     "duration_seconds":  60,
+                                     "status":  "simulated"
+                                 },
+                   "create_iso":  {
+                                      "duration_seconds":  480,
+                                      "status":  "simulated"
+                                  },
+                   "compute_hash":  {
+                                        "duration_seconds":  30,
+                                        "status":  "simulated"
+                                    },
+                   "test_vm":  {
+                                   "status":  "skipped"
+                               }
+               },
+    "timestamp":  "2025-10-14T23:48:37Z",
+    "build_id":  "iso-build-simulation-20251014-234823",
+    "warrant_id":  "warrant-iso-test-001",
+    "output":  {
+                   "iso_path":  "C:\\ai-council\\workspace\\output\\Win11_Custom_Privacy_Simulation.iso",
+                   "hash":  "ABC123DEF456789012345678901234567890123456789012345678901234567",
+                   "size_gb":  5
+               }
+}

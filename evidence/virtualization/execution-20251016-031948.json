@@ -1,0 +1,16 @@
+{
+    "TierName":  "Hyper-V VM",
+    "Method":  "WhatIf",
+    "Policy":  "NESTED-VIRTUALIZATION-POLICY",
+    "CreateSnapshot":  true,
+    "Success":  true,
+    "Timestamp":  "2025-10-16 03:19:48",
+    "WhatIf":  true,
+    "Script":  ".\\TOTAL-INTEGRATION-SYSTEM.ps1",
+    "Tier":  2,
+    "Arguments":  [
+
+                  ],
+    "Duration":  0.5615806,
+    "ExitCode":  0
+}

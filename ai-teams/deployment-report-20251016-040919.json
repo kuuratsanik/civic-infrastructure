@@ -1,0 +1,52 @@
+﻿{
+    "TotalTeams":  8,
+    "TotalAgents":  40,
+    "TotalCapacity":  153,
+    "Teams":  [
+                  {
+                      "Capacity":  8,
+                      "Agents":  5,
+                      "Name":  "Digital Product Team"
+                  },
+                  {
+                      "Capacity":  8,
+                      "Agents":  5,
+                      "Name":  "AI Development Team"
+                  },
+                  {
+                      "Capacity":  10,
+                      "Agents":  5,
+                      "Name":  "Consulting Delivery Team"
+                  },
+                  {
+                      "Capacity":  12,
+                      "Agents":  5,
+                      "Name":  "Automation Engineering Team"
+                  },
+                  {
+                      "Capacity":  15,
+                      "Agents":  5,
+                      "Name":  "Sales Team"
+                  },
+                  {
+                      "Capacity":  50,
+                      "Agents":  5,
+                      "Name":  "Financial Operations Team"
+                  },
+                  {
+                      "Capacity":  20,
+                      "Agents":  5,
+                      "Name":  "Content Creation Team"
+                  },
+                  {
+                      "Capacity":  30,
+                      "Agents":  5,
+                      "Name":  "Quality Assurance Team"
+                  }
+              ],
+    "Timestamp":  {
+                      "value":  "\/Date(1760576954983)\/",
+                      "DisplayHint":  2,
+                      "DateTime":  "neljapäev, 16. oktoober 2025 04:09:14"
+                  }
+}

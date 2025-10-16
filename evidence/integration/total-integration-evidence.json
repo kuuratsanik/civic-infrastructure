@@ -1,0 +1,292 @@
+﻿{
+    "DiscoveredAssets":  {
+                             "Automation":  [
+                                                {
+                                                    "Path":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\scripts\\AI-Civic-Integration.ps1",
+                                                    "Category":  "scripts",
+                                                    "Name":  "AI-Civic-Integration.ps1"
+                                                },
+                                                {
+                                                    "Path":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\scripts\\Initialize-AgentSystem.ps1",
+                                                    "Category":  "scripts",
+                                                    "Name":  "Initialize-AgentSystem.ps1"
+                                                },
+                                                {
+                                                    "Path":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\scripts\\Setup-ISOBuildSystem.ps1",
+                                                    "Category":  "scripts",
+                                                    "Name":  "Setup-ISOBuildSystem.ps1"
+                                                },
+                                                {
+                                                    "Path":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\scripts\\ai-system\\Initialize-AIAutonomousSystem.ps1",
+                                                    "Category":  "ai-system",
+                                                    "Name":  "Initialize-AIAutonomousSystem.ps1"
+                                                },
+                                                {
+                                                    "Path":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\scripts\\ai-system\\hive-mind\\HiveMind.ps1",
+                                                    "Category":  "hive-mind",
+                                                    "Name":  "HiveMind.ps1"
+                                                },
+                                                {
+                                                    "Path":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\scripts\\ai-system\\personality\\KITT-Personality.ps1",
+                                                    "Category":  "personality",
+                                                    "Name":  "KITT-Personality.ps1"
+                                                },
+                                                {
+                                                    "Path":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\scripts\\ai-system\\personality\\SuperKITT.ps1",
+                                                    "Category":  "personality",
+                                                    "Name":  "SuperKITT.ps1"
+                                                },
+                                                {
+                                                    "Path":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\scripts\\ai-system\\problem-solver\\AI-ProblemSolver.ps1",
+                                                    "Category":  "problem-solver",
+                                                    "Name":  "AI-ProblemSolver.ps1"
+                                                },
+                                                {
+                                                    "Path":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\scripts\\ai-system\\safety\\SafetyFramework.ps1",
+                                                    "Category":  "safety",
+                                                    "Name":  "SafetyFramework.ps1"
+                                                },
+                                                {
+                                                    "Path":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\scripts\\ai-system\\security\\EthicalHacking.ps1",
+                                                    "Category":  "security",
+                                                    "Name":  "EthicalHacking.ps1"
+                                                },
+                                                {
+                                                    "Path":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\scripts\\ai-system\\self-capabilities\\SelfCreating.ps1",
+                                                    "Category":  "self-capabilities",
+                                                    "Name":  "SelfCreating.ps1"
+                                                },
+                                                {
+                                                    "Path":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\scripts\\ai-system\\self-capabilities\\SelfDeveloping.ps1",
+                                                    "Category":  "self-capabilities",
+                                                    "Name":  "SelfDeveloping.ps1"
+                                                },
+                                                {
+                                                    "Path":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\scripts\\ai-system\\self-capabilities\\SelfImproving.ps1",
+                                                    "Category":  "self-capabilities",
+                                                    "Name":  "SelfImproving.ps1"
+                                                },
+                                                {
+                                                    "Path":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\scripts\\ai-system\\self-capabilities\\SelfImprovising.ps1",
+                                                    "Category":  "self-capabilities",
+                                                    "Name":  "SelfImprovising.ps1"
+                                                },
+                                                {
+                                                    "Path":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\scripts\\ai-system\\self-capabilities\\SelfLearning.ps1",
+                                                    "Category":  "self-capabilities",
+                                                    "Name":  "SelfLearning.ps1"
+                                                },
+                                                {
+                                                    "Path":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\scripts\\ai-system\\self-capabilities\\SelfResearching.ps1",
+                                                    "Category":  "self-capabilities",
+                                                    "Name":  "SelfResearching.ps1"
+                                                },
+                                                {
+                                                    "Path":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\scripts\\ai-system\\self-capabilities\\SelfUpgrading.ps1",
+                                                    "Category":  "self-capabilities",
+                                                    "Name":  "SelfUpgrading.ps1"
+                                                },
+                                                {
+                                                    "Path":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\scripts\\ai-system\\world-change\\WorldChangeOrchestrator.ps1",
+                                                    "Category":  "world-change",
+                                                    "Name":  "WorldChangeOrchestrator.ps1"
+                                                },
+                                                {
+                                                    "Path":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\scripts\\setup\\Install-Ollama.ps1",
+                                                    "Category":  "setup",
+                                                    "Name":  "Install-Ollama.ps1"
+                                                },
+                                                {
+                                                    "Path":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\scripts\\setup\\Prepare-FirstBoot.ps1",
+                                                    "Category":  "setup",
+                                                    "Name":  "Prepare-FirstBoot.ps1"
+                                                },
+                                                {
+                                                    "Path":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\scripts\\utilities\\Download-Windows11ISO.ps1",
+                                                    "Category":  "utilities",
+                                                    "Name":  "Download-Windows11ISO.ps1"
+                                                },
+                                                {
+                                                    "Path":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\scripts\\utilities\\Extract-Windows11ISO.ps1",
+                                                    "Category":  "utilities",
+                                                    "Name":  "Extract-Windows11ISO.ps1"
+                                                },
+                                                {
+                                                    "Path":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\scripts\\utilities\\Find-Windows11ISO.ps1",
+                                                    "Category":  "utilities",
+                                                    "Name":  "Find-Windows11ISO.ps1"
+                                                },
+                                                {
+                                                    "Path":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\scripts\\utilities\\Invoke-PacketScheduler.ps1",
+                                                    "Category":  "utilities",
+                                                    "Name":  "Invoke-PacketScheduler.ps1"
+                                                },
+                                                {
+                                                    "Path":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\scripts\\utilities\\New-GovernanceDashboard.ps1",
+                                                    "Category":  "utilities",
+                                                    "Name":  "New-GovernanceDashboard.ps1"
+                                                }
+                                            ],
+                             "Agents":  [
+                                            {
+                                                "Size":  15372,
+                                                "Script":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\agents\\build\\iso-build-agent.ps1",
+                                                "Type":  "build"
+                                            },
+                                            {
+                                                "Size":  15692,
+                                                "Script":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\agents\\build\\iso-build-ai-agent.ps1",
+                                                "Type":  "build"
+                                            },
+                                            {
+                                                "Size":  7047,
+                                                "Script":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\agents\\build\\scripts\\Apply-Customizations.ps1",
+                                                "Type":  "build"
+                                            },
+                                            {
+                                                "Size":  2100,
+                                                "Script":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\agents\\build\\scripts\\Dismount-WimImage.ps1",
+                                                "Type":  "build"
+                                            },
+                                            {
+                                                "Size":  2848,
+                                                "Script":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\agents\\build\\scripts\\Get-ISOHash.ps1",
+                                                "Type":  "build"
+                                            },
+                                            {
+                                                "Size":  2734,
+                                                "Script":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\agents\\build\\scripts\\Mount-WimImage.ps1",
+                                                "Type":  "build"
+                                            },
+                                            {
+                                                "Size":  4129,
+                                                "Script":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\agents\\build\\scripts\\New-BootableISO.ps1",
+                                                "Type":  "build"
+                                            },
+                                            {
+                                                "Size":  2620,
+                                                "Script":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\agents\\build\\scripts\\Test-ISOInVM.ps1",
+                                                "Type":  "build"
+                                            },
+                                            {
+                                                "Size":  5617,
+                                                "Script":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\agents\\build\\templates\\debloat\\Remove-Bloatware.ps1",
+                                                "Type":  "build"
+                                            },
+                                            {
+                                                "Size":  12679,
+                                                "Script":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\agents\\civic\\civic-agent.ps1",
+                                                "Type":  "civic"
+                                            },
+                                            {
+                                                "Size":  8165,
+                                                "Script":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\agents\\civic\\ceremonies\\01-foundation\\Initialize-Foundation.ps1",
+                                                "Type":  "civic"
+                                            },
+                                            {
+                                                "Size":  13049,
+                                                "Script":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\agents\\civic\\ceremonies\\05-developer-cockpit\\Setup-DeveloperEnvironment.ps1",
+                                                "Type":  "civic"
+                                            },
+                                            {
+                                                "Size":  7023,
+                                                "Script":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\agents\\factory\\agent-factory.ps1",
+                                                "Type":  "factory"
+                                            },
+                                            {
+                                                "Size":  9965,
+                                                "Script":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\agents\\master\\master-orchestrator-safe.ps1",
+                                                "Type":  "master"
+                                            },
+                                            {
+                                                "Size":  13137,
+                                                "Script":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\agents\\master\\master-orchestrator.ps1",
+                                                "Type":  "master"
+                                            }
+                                        ],
+                             "Ceremonies":  [
+                                                {
+                                                    "Size":  8165,
+                                                    "Script":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\scripts\\ceremonies\\01-foundation\\Initialize-Foundation.ps1",
+                                                    "Name":  "01-foundation",
+                                                    "LastModified":  "\/Date(1760371416160)\/"
+                                                },
+                                                {
+                                                    "Size":  13049,
+                                                    "Script":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\scripts\\ceremonies\\05-developer-cockpit\\Setup-DeveloperEnvironment.ps1",
+                                                    "Name":  "05-developer-cockpit",
+                                                    "LastModified":  "\/Date(1760369083274)\/"
+                                                },
+                                                {
+                                                    "Size":  14359,
+                                                    "Script":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\scripts\\ceremonies\\09-iso-build\\Build-CustomISO.ps1",
+                                                    "Name":  "09-iso-build",
+                                                    "LastModified":  "\/Date(1760475902515)\/"
+                                                },
+                                                {
+                                                    "Size":  38638,
+                                                    "Script":  "C:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder\\scripts\\ceremonies\\10-final-setup\\Install-CompleteDeveloperStack.ps1",
+                                                    "Name":  "10-final-setup",
+                                                    "LastModified":  "\/Date(1760538827053)\/"
+                                                }
+                                            ],
+                             "VSCode":  {
+                                            "Launch":  true,
+                                            "Tasks":  7,
+                                            "Settings":  true
+                                        }
+                         },
+    "WorkspaceOptimized":  true,
+    "Optimizations":  {
+                          "Automation":  {
+                                             "CanBeAutomated":  true,
+                                             "Recommendation":  "All automation scripts can be managed by AI Teams",
+                                             "Total":  25
+                                         },
+                          "Agents":  {
+                                         "Optimized":  true,
+                                         "Recommendation":  "Agents can be orchestrated through AI Team Management System",
+                                         "Total":  15
+                                     },
+                          "Ceremonies":  [
+                                             {
+                                                 "Ceremony":  "01-foundation",
+                                                 "RecommendedImprovements":  [
+
+                                                                             ],
+                                                 "HasErrorHandling":  true,
+                                                 "HasLogging":  true
+                                             },
+                                             {
+                                                 "Ceremony":  "05-developer-cockpit",
+                                                 "RecommendedImprovements":  [
+
+                                                                             ],
+                                                 "HasErrorHandling":  true,
+                                                 "HasLogging":  true
+                                             },
+                                             {
+                                                 "Ceremony":  "09-iso-build",
+                                                 "RecommendedImprovements":  [
+                                                                                 "Add try/catch error handling"
+                                                                             ],
+                                                 "HasErrorHandling":  false,
+                                                 "HasLogging":  true
+                                             },
+                                             {
+                                                 "Ceremony":  "10-final-setup",
+                                                 "RecommendedImprovements":  [
+
+                                                                             ],
+                                                 "HasErrorHandling":  true,
+                                                 "HasLogging":  true
+                                             }
+                                         ]
+                      },
+    "LineageGraphGenerated":  true,
+    "AITeamsIntegrated":  8,
+    "IntegrationComplete":  true,
+    "Timestamp":  "2025-10-16T03:25:45.8963569+03:00",
+    "GovernanceActive":  true,
+    "Hash":  "CA37824ECB6AD1440E2E20F46E95DD8E0AA3550D23D945EA7067E712442DEFEF"
+}

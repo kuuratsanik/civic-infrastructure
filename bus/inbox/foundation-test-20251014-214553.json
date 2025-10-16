@@ -1,0 +1,13 @@
+{
+    "action":  "run_ceremony",
+    "timestamp":  "2025-10-14T21:45:53Z",
+    "role":  "civic",
+    "warrant_id":  "warrant-foundation-20251014-205755",
+    "inputs":  {
+                   "ceremony_name":  "foundation",
+                   "params":  {
+
+                              }
+               },
+    "packet_id":  "foundation-test-20251014-214553"
+}

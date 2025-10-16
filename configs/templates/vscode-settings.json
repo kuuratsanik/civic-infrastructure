@@ -1,0 +1,106 @@
+{
+    "_comment": "VS Code Settings Template for Windows 11 Pro Civic Infrastructure",
+    "editor.fontSize": 14,
+    "editor.fontFamily": "'Cascadia Code', 'Fira Code', Consolas, 'Courier New', monospace",
+    "editor.ligatures": true,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.wordWrap": "on",
+    "editor.renderWhitespace": "boundary",
+    "editor.rulers": [80, 120],
+    
+    "workbench.colorTheme": "Default Dark+",
+    "workbench.iconTheme": "vs-seti",
+    "workbench.startupEditor": "newUntitledFile",
+    
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    "files.encoding": "utf8",
+    "files.eol": "\r\n",
+    "files.trimTrailingWhitespace": true,
+    
+    "powershell.integratedConsole.showOnStartup": false,
+    "powershell.powerShellDefaultVersion": "PowerShell (x64)",
+    "powershell.enableProfileLoading": true,
+    "powershell.scriptAnalysis.enable": true,
+    
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "git.autofetch": true,
+    
+    "extensions.autoUpdate": true,
+    "extensions.ignoreRecommendations": false,
+    
+    "security.workspace.trust.enabled": true,
+    "security.workspace.trust.startupPrompt": "once",
+    
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell",
+            "args": ["-NoProfile"]
+        },
+        "Command Prompt": {
+            "path": "C:\\Windows\\System32\\cmd.exe",
+            "icon": "terminal-cmd"
+        },
+        "PowerShell 7": {
+            "path": "pwsh.exe",
+            "icon": "terminal-powershell",
+            "args": ["-NoProfile"]
+        }
+    },
+    
+    "json.format.enable": true,
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "**/WindowsGovernance/**/*.json"
+            ],
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "computer": {
+                        "type": "string"
+                    },
+                    "user": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    ],
+    
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/.git": true,
+        "**/tmp": true,
+        "**/temp": true
+    },
+    
+    "files.associations": {
+        "*.ps1": "powershell",
+        "*.psm1": "powershell",
+        "*.psd1": "powershell",
+        "*.ps1xml": "xml"
+    },
+    
+    "editor.tokenColorCustomizations": {
+        "comments": "#6A9955",
+        "keywords": "#569CD6",
+        "strings": "#CE9178"
+    },
+    
+    "civic.governance": {
+        "auditTrailPath": "%USERPROFILE%\\Documents\\WindowsGovernance\\AuditTrail.jsonl",
+        "configHashPath": "%USERPROFILE%\\Documents\\WindowsGovernance\\ConfigHashes.json",
+        "enableValidation": true,
+        "autoBackup": true
+    }
+}

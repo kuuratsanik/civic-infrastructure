@@ -1,0 +1,27 @@
+﻿{
+    "SelfUpgrade":  {
+                        "TargetUpgradesPerDay":  100,
+                        "Enabled":  true
+                    },
+    "CapabilitiesDeployed":  232,
+    "PolicyCompliance":  "100%",
+    "MonthlyCost":  "$0.00",
+    "UptimeTarget":  "99.9%",
+    "SelfLearning":  {
+                         "TargetInsightsPerDay":  1000,
+                         "Enabled":  true
+                     },
+    "LocalCloudSync":  {
+                           "Direction":  "Cloud to Local",
+                           "SyncFrequency":  "5 minutes",
+                           "Enabled":  true
+                       },
+    "TotalCloudServices":  16,
+    "Status":  "FULLY OPERATIONAL",
+    "TotalInstances":  464,
+    "DeploymentDate":  {
+                           "value":  "\/Date(1760575728484)\/",
+                           "DisplayHint":  2,
+                           "DateTime":  "neljapäev, 16. oktoober 2025 03:48:48"
+                       }
+}

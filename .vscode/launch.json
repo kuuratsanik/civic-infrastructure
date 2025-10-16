@@ -1,0 +1,26 @@
+﻿{
+    "version":  "0.2.0",
+    "configurations":  [
+                           {
+                               "script":  "${workspaceFolder}/automation/Deploy-All.ps1",
+                               "request":  "launch",
+                               "name":  "Deploy: All Platforms (Auto)",
+                               "type":  "PowerShell",
+                               "cwd":  "${workspaceFolder}"
+                           },
+                           {
+                               "script":  "${workspaceFolder}/automation/Watch-Deploy.ps1",
+                               "request":  "launch",
+                               "name":  "Deploy: Watch Mode",
+                               "type":  "PowerShell",
+                               "cwd":  "${workspaceFolder}"
+                           },
+                           {
+                               "script":  "${workspaceFolder}/automation/Check-Status.ps1",
+                               "request":  "launch",
+                               "name":  "Check: Deployment Status",
+                               "type":  "PowerShell",
+                               "cwd":  "${workspaceFolder}"
+                           }
+                       ]
+}

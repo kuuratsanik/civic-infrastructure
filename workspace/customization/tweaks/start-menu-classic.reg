@@ -1,0 +1,73 @@
+Windows Registry Editor Version 5.00
+
+; ========================================
+; Windows 11 Start Menu & Taskbar Tweaks
+; ========================================
+; Restore classic behaviors and remove clutter
+
+; === Taskbar: Left Align (Classic) ===
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"TaskbarAl"=dword:00000000
+
+; === Disable Taskbar Widgets ===
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Dsh]
+"AllowNewsAndInterests"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\NewsAndInterests\AllowNewsAndInterests]
+"value"=dword:00000000
+
+; === Disable Chat Icon ===
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Chat]
+"ChatIcon"=dword:00000003
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"TaskbarMn"=dword:00000000
+
+; === Disable Task View Button ===
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"ShowTaskViewButton"=dword:00000000
+
+; === Disable Search Highlights ===
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
+"EnableDynamicContentInWSB"=dword:00000000
+
+; === Remove Meet Now ===
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+"HideSCAMeetNow"=dword:00000001
+
+; === Disable Snap Assist ===
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"EnableSnapAssistFlyout"=dword:00000000
+"EnableSnapBar"=dword:00000000
+"EnableTaskGroups"=dword:00000000
+
+; === Disable Recently Added Apps ===
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+"HideRecentlyAddedApps"=dword:00000001
+
+; === Disable Recommended Section in Start ===
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+"HideRecommendedSection"=dword:00000001
+
+; === Show File Extensions ===
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"HideFileExt"=dword:00000000
+
+; === Show Hidden Files ===
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"Hidden"=dword:00000001
+
+; === Disable Quick Access Recent Files ===
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+"ShowRecent"=dword:00000000
+"ShowFrequent"=dword:00000000
+
+; === Compact View in File Explorer ===
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"UseCompactMode"=dword:00000001
+
+; === Disable Aero Shake ===
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+"NoWindowMinimizingShortcuts"=dword:00000001
+
+; === END ===

@@ -1,0 +1,15 @@
+﻿{
+    "files.autoSaveDelay":  1000,
+    "task.autoDetect":  "on",
+    "powershell.codeFormatting.autoCorrectAliases":  true,
+    "files.autoSave":  "afterDelay",
+    "files.watcherExclude":  {
+                                 "**/deploy/web-packages/**":  false,
+                                 "**/.git/**":  true,
+                                 "**/node_modules/**":  true
+                             },
+    "terminal.integrated.defaultProfile.windows":  "PowerShell",
+    "editor.formatOnSave":  true,
+    "workbench.colorTheme":  "Default Dark+",
+    "task.quickOpen.detail":  true
+}

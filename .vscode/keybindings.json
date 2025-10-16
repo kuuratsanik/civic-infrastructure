@@ -1,0 +1,48 @@
+[
+    {
+        "key": "ctrl+shift+t",
+        "command": "workbench.action.tasks.runTask",
+        "args": "AI: Test Agent System"
+    },
+    {
+        "key": "ctrl+shift+b",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Build Custom ISO"
+    },
+    {
+        "key": "ctrl+shift+i",
+        "command": "workbench.action.tasks.runTask",
+        "args": "AI: Analyze ISO with AI"
+    },
+    {
+        "key": "ctrl+alt+m",
+        "command": "workbench.action.tasks.runTask",
+        "args": "AI: Start Master Orchestrator"
+    },
+    {
+        "key": "ctrl+alt+c",
+        "command": "workbench.action.tasks.runTask",
+        "args": "AI: Start Civic Agent with AI"
+    },
+    {
+        "key": "ctrl+alt+v",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Run Validation Tests"
+    },
+    {
+        "key": "ctrl+shift+l",
+        "command": "workbench.action.terminal.focusNext"
+    },
+    {
+        "key": "ctrl+shift+k",
+        "command": "workbench.action.terminal.focusPrevious"
+    },
+    {
+        "key": "ctrl+alt+enter",
+        "command": "PowerShell.RunSelection"
+    },
+    {
+        "key": "f8",
+        "command": "PowerShell.DebugSelection"
+    }
+]

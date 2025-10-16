@@ -1,0 +1,147 @@
+{
+    "Timestamp":  "2025-10-16 04:33:56",
+    "Critical":  2,
+    "BottlenecksFound":  5,
+    "Type":  "Daily",
+    "Bottlenecks":  [
+                        {
+                            "Severity":  "CRITICAL",
+                            "ID":  "PLATFORM-ACCOUNTS",
+                            "FixTime":  "60 minutes",
+                            "Impact":  "€16500/month blocked",
+                            "Description":  "Upwork, Fiverr, Gumroad accounts not set up - blocks all revenue",
+                            "AutoFixable":  false,
+                            "Name":  "Revenue Platform Accounts Not Configured",
+                            "Details":  {
+                                            "Platforms":  {
+                                                              "Gumroad":  {
+                                                                              "Status":  "NOT_CONFIGURED",
+                                                                              "ConfigFile":  "gumroad-config.json",
+                                                                              "Impact":  3000
+                                                                          },
+                                                              "Fiverr":  {
+                                                                             "Status":  "NOT_CONFIGURED",
+                                                                             "ConfigFile":  "fiverr-config.json",
+                                                                             "Impact":  2000
+                                                                         },
+                                                              "DevTo":  {
+                                                                            "Status":  "NOT_CONFIGURED",
+                                                                            "ConfigFile":  "devto-config.json",
+                                                                            "Impact":  500
+                                                                        },
+                                                              "Medium":  {
+                                                                             "Status":  "NOT_CONFIGURED",
+                                                                             "ConfigFile":  "medium-config.json",
+                                                                             "Impact":  1000
+                                                                         },
+                                                              "Upwork":  {
+                                                                             "Status":  "NOT_CONFIGURED",
+                                                                             "ConfigFile":  "upwork-config.json",
+                                                                             "Impact":  10000
+                                                                         }
+                                                          },
+                                            "BlockedRevenue":  16500,
+                                            "HasCriticalBottleneck":  true,
+                                            "TotalPlatforms":  5,
+                                            "ConfiguredCount":  0
+                                        },
+                            "Solution":  "Create platform accounts immediately",
+                            "Status":  "BLOCKING",
+                            "Priority":  1
+                        },
+                        {
+                            "Severity":  "CRITICAL",
+                            "ID":  "LOW-UTILIZATION",
+                            "FixTime":  "Depends on platform accounts",
+                            "Impact":  "99.3% capacity idle (152 of 153 projects)",
+                            "Description":  "AI teams have 0,65% utilization - massive idle capacity",
+                            "AutoFixable":  false,
+                            "Name":  "AI Team Utilization Critical",
+                            "Details":  {
+                                            "TotalCapacity":  153,
+                                            "Status":  "CRITICAL",
+                                            "UtilizationPercent":  0.65,
+                                            "ActiveProjects":  1
+                                        },
+                            "Solution":  "Activate sales pipeline (blocked by platform accounts)",
+                            "Status":  "CRITICAL",
+                            "Priority":  2
+                        },
+                        {
+                            "Severity":  "HIGH",
+                            "ID":  "SALES-PIPELINE-EMPTY",
+                            "FixTime":  "Automatic after platforms ready",
+                            "Impact":  "No incoming projects - delays first revenue",
+                            "Description":  "AI Sales Team ready but can\u0027t send proposals",
+                            "AutoFixable":  true,
+                            "Name":  "No Active Sales Pipeline",
+                            "Details":  {
+                                            "Status":  "BLOCKED",
+                                            "HasBottleneck":  true,
+                                            "ProjectsWon":  0,
+                                            "ProposalsSent":  0,
+                                            "WinRate":  0
+                                        },
+                            "Solution":  "Set up platforms, then AI team activates automatically",
+                            "Status":  "BLOCKED",
+                            "Priority":  3
+                        },
+                        {
+                            "Severity":  "MEDIUM",
+                            "ID":  "NO-DIGITAL-PRODUCTS",
+                            "FixTime":  "2-3 hours via AI team",
+                            "Impact":  "€3,000/month passive income blocked",
+                            "Description":  "AI Product Team ready but no products packaged",
+                            "AutoFixable":  true,
+                            "Name":  "No Digital Products Created",
+                            "Details":  {
+                                            "Status":  "NONE",
+                                            "ProductsCreated":  0,
+                                            "HasBottleneck":  true
+                                        },
+                            "Solution":  "Assign product creation tasks to AI Product Team",
+                            "Status":  "NOT_STARTED",
+                            "Priority":  4
+                        },
+                        {
+                            "Severity":  "MEDIUM",
+                            "ID":  "NO-CONTENT-PUBLISHED",
+                            "FixTime":  "2-3 hours via AI team",
+                            "Impact":  "€2,400/month content revenue blocked",
+                            "Description":  "AI Content Team ready but no articles published",
+                            "AutoFixable":  true,
+                            "Name":  "No Content Published",
+                            "Details":  {
+                                            "ArticlesPublished":  0,
+                                            "HasBottleneck":  true,
+                                            "Status":  "NOT_STARTED"
+                                        },
+                            "Solution":  "Assign content creation tasks to AI Content Team",
+                            "Status":  "NOT_STARTED",
+                            "Priority":  5
+                        }
+                    ],
+    "High":  11,
+    "Medium":  2,
+    "SystemMetrics":  {
+                          "Revenue":  {
+                                          "Status":  "GROWING",
+                                          "Last7DaysRevenue":  850,
+                                          "HasBottleneck":  false,
+                                          "RecentTransactions":  1
+                                      },
+                          "Utilization":  {
+                                              "TotalCapacity":  153,
+                                              "Status":  "CRITICAL",
+                                              "UtilizationPercent":  0.65,
+                                              "ActiveProjects":  1
+                                          },
+                          "Pipeline":  {
+                                           "Status":  "BLOCKED",
+                                           "HasBottleneck":  true,
+                                           "ProjectsWon":  0,
+                                           "ProposalsSent":  0,
+                                           "WinRate":  0
+                                       }
+                      }
+}

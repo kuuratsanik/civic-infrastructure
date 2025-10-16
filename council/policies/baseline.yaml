@@ -1,0 +1,81 @@
+# Baseline Security Policy
+# Applied by default - minimal hardening for smooth setup
+
+version: "1.0.0"
+policy_name: "baseline_security"
+description: "Minimal hardening to ease initial setup while maintaining basic security"
+esm_mode: disabled
+
+# Network Security
+network:
+  smb:
+    smb1_enabled: false
+    smb_signing_required: true
+  firewall:
+    enabled: true
+    block_inbound_by_default: true
+    profiles:
+      - domain
+      - private
+      - public
+
+# Defender Settings
+defender:
+  real_time_protection: true
+  cloud_delivered_protection: true
+  automatic_sample_submission: false
+  tamper_protection: true
+  attack_surface_reduction:
+    enabled: false  # Not enforced in baseline mode
+    rules: []
+
+# AppLocker / WDAC
+application_control:
+  applocker:
+    enabled: false  # Not enforced in baseline
+    audit_only: true
+  wdac:
+    enabled: false  # Not enforced in baseline
+    policy_mode: "audit"
+
+# PowerShell
+powershell:
+  constrained_language_mode: false  # Full language mode for setup
+  script_block_logging: true
+  transcription: true
+  execution_policy: "RemoteSigned"
+
+# Auditing
+audit:
+  policy_changes: true
+  account_logon: true
+  object_access: false  # Verbose, enable in ESM
+  privilege_use: false  # Verbose, enable in ESM
+  detailed_tracking: false  # Verbose, enable in ESM
+  system_events: true
+  audit_log_max_size_mb: 100
+
+# Driver Security
+drivers:
+  enforce_signed_only: false  # Allow unsigned for dev
+  block_vulnerable_drivers: false
+  hypervisor_enforced_code_integrity: false
+
+# BitLocker
+bitlocker:
+  enforce_encryption: false  # Recommend but don't enforce
+  require_tpm: false
+
+# User Account Control
+uac:
+  enabled: true
+  prompt_on_secure_desktop: true
+  admin_approval_mode: true
+
+# Additional Hardening
+hardening:
+  disable_autorun: true
+  disable_windows_script_host: false
+  disable_powershell_v2: true
+  enable_credential_guard: false  # Requires UEFI, ESM only
+  enable_virtualization_based_security: false  # ESM only

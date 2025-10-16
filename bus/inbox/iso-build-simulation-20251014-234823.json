@@ -1,0 +1,19 @@
+{
+    "action":  "iso_build",
+    "timestamp":  "2025-10-14T23:48:23Z",
+    "role":  "build",
+    "warrant_id":  "warrant-iso-test-001",
+    "inputs":  {
+                   "mount_dir":  "customization/mount",
+                   "base_iso":  "windows11-base/sources/install.wim",
+                   "customizations":  {
+                                          "debloat":  "templates/debloat/Remove-Bloatware.ps1",
+                                          "updates":  null,
+                                          "drivers":  null,
+                                          "tweaks":  "customization/tweaks"
+                                      },
+                   "output_iso":  "output/Win11_Custom_Privacy_Simulation_20251014_234823.iso",
+                   "test_in_vm":  false
+               },
+    "packet_id":  "iso-build-simulation-20251014-234823"
+}

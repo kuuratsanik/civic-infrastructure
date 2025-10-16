@@ -1,0 +1,16 @@
+﻿{
+    "revenueStreams":  7,
+    "timestamp":  {
+                      "value":  "\/Date(1760577534780)\/",
+                      "DisplayHint":  2,
+                      "DateTime":  "neljapäev, 16. oktoober 2025 04:18:54"
+                  },
+    "version":  "1.0.0",
+    "integration":  {
+                        "aiTeamOrchestrator":  "CONNECTED",
+                        "revenueGenerator":  "CONNECTED",
+                        "monitoringSystem":  "ACTIVE"
+                    },
+    "status":  "OPERATIONAL",
+    "totalPotentialRevenue":  27500
+}

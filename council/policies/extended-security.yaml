@@ -1,0 +1,152 @@
+# Extended Security Mode (ESM) Policy
+# Activated via DAO proposal + warrant - full hardening
+
+version: "1.0.0"
+policy_name: "extended_security_mode"
+description: "Full WDAC/AppLocker enforcement, Constrained Language Mode, strict ASR rules, signed drivers only"
+esm_mode: enabled
+
+# Network Security
+network:
+  smb:
+    smb1_enabled: false
+    smb2_enabled: true
+    smb_signing_required: true
+    smb_encryption_required: true
+  firewall:
+    enabled: true
+    block_inbound_by_default: true
+    profiles:
+      - domain
+      - private
+      - public
+    advanced_rules:
+      - block_rdp_except_approved_ips
+      - block_winrm_except_localhost
+      - block_smb_outbound
+
+# Defender Settings
+defender:
+  real_time_protection: true
+  cloud_delivered_protection: true
+  automatic_sample_submission: true
+  tamper_protection: true
+  controlled_folder_access: true
+  attack_surface_reduction:
+    enabled: true
+    enforcement_mode: "block"
+    rules:
+      - "block_executable_content_from_email_and_webmail"
+      - "block_all_office_applications_from_creating_child_processes"
+      - "block_office_applications_from_creating_executable_content"
+      - "block_office_applications_from_injecting_code_into_other_processes"
+      - "block_javascript_or_vbscript_from_launching_downloaded_executable_content"
+      - "block_execution_of_potentially_obfuscated_scripts"
+      - "block_win32_api_calls_from_office_macros"
+      - "block_credential_stealing_from_windows_local_security_authority_subsystem"
+      - "block_process_creations_originating_from_psexec_and_wmi_commands"
+      - "block_untrusted_and_unsigned_processes_that_run_from_usb"
+      - "block_adobe_reader_from_creating_child_processes"
+      - "block_persistence_through_wmi_event_subscription"
+
+# AppLocker / WDAC
+application_control:
+  applocker:
+    enabled: true
+    enforcement_mode: "enforce"
+    rules:
+      executable:
+        - allow_signed_by_microsoft
+        - allow_council_approved_publishers
+        - deny_all_others
+      scripts:
+        - allow_digitally_signed_scripts_only
+        - allow_council_signed_scripts
+      msi_installers:
+        - allow_signed_by_microsoft
+        - allow_council_approved_publishers
+      dll:
+        - allow_microsoft_signed_only
+  wdac:
+    enabled: true
+    policy_mode: "enforce"
+    base_policy: "allow_microsoft_signed_apps"
+    supplemental_policies:
+      - "council_approved_applications"
+      - "civic_infrastructure_tools"
+
+# PowerShell
+powershell:
+  constrained_language_mode: true  # CLM for non-council users
+  script_block_logging: true
+  transcription: true
+  execution_policy: "AllSigned"
+  module_logging: true
+  deep_script_block_logging: true
+  council_bypass:
+    enabled: true  # Council agents run in FullLanguage mode
+    authorized_users:
+      - "council.master"
+      - "council.civic"
+      - "council.audit"
+
+# Auditing
+audit:
+  policy_changes: true
+  account_logon: true
+  object_access: true
+  privilege_use: true
+  detailed_tracking: true
+  system_events: true
+  audit_log_max_size_mb: 500
+  forward_to_siem: false  # Future integration
+  immutable_audit_trail: true
+
+# Driver Security
+drivers:
+  enforce_signed_only: true
+  block_vulnerable_drivers: true
+  hypervisor_enforced_code_integrity: true
+  allowed_publishers:
+    - "Microsoft Corporation"
+    - "Intel Corporation"
+    - "AMD Inc."
+    - "NVIDIA Corporation"
+    # Add council-approved driver publishers here
+
+# BitLocker
+bitlocker:
+  enforce_encryption: true
+  require_tpm: true
+  require_startup_pin: false
+  recovery_key_backup: "AD_or_local_secure_storage"
+
+# User Account Control
+uac:
+  enabled: true
+  prompt_on_secure_desktop: true
+  admin_approval_mode: true
+  elevate_signed_executables_only: true
+
+# Additional Hardening
+hardening:
+  disable_autorun: true
+  disable_windows_script_host: true
+  disable_powershell_v2: true
+  enable_credential_guard: true
+  enable_virtualization_based_security: true
+  enable_secure_boot: true
+  enable_hvci: true  # Hypervisor-protected Code Integrity
+  block_anonymous_enum: true
+  disable_netbios: true
+  disable_llmnr: true
+  disable_wpad: true
+
+# Safe Mode Subset (Active during ESM disable emergency)
+safe_mode_subset:
+  # If ESM must be disabled, these minimal controls remain active
+  firewall: true
+  defender_rtp: true
+  smb_signing: true
+  audit_logging: true
+  powershell_logging: true

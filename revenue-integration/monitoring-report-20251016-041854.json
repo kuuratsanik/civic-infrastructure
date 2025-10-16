@@ -1,0 +1,86 @@
+﻿{
+    "streams":  [
+                    {
+                        "expectedMin":  2000,
+                        "name":  "Freelance Consulting",
+                        "supportTeams":  [
+                                             "Sales",
+                                             "QualityAssurance",
+                                             "Financial"
+                                         ],
+                        "primaryTeam":  "ConsultingDelivery",
+                        "expectedMax":  8000,
+                        "status":  "MONITORING"
+                    },
+                    {
+                        "expectedMin":  1000,
+                        "name":  "Digital Products",
+                        "supportTeams":  [
+                                             "ContentCreation",
+                                             "Sales"
+                                         ],
+                        "primaryTeam":  "DigitalProduct",
+                        "expectedMax":  5000,
+                        "status":  "MONITORING"
+                    },
+                    {
+                        "expectedMin":  200,
+                        "name":  "Open Source Sponsorship",
+                        "supportTeams":  [
+                                             "ContentCreation"
+                                         ],
+                        "primaryTeam":  "AIDevelopment",
+                        "expectedMax":  1000,
+                        "status":  "MONITORING"
+                    },
+                    {
+                        "expectedMin":  5000,
+                        "name":  "Cloud Services Resale",
+                        "supportTeams":  [
+                                             "Sales",
+                                             "Financial"
+                                         ],
+                        "primaryTeam":  "AutomationEngineering",
+                        "expectedMax":  15000,
+                        "status":  "MONITORING"
+                    },
+                    {
+                        "expectedMin":  500,
+                        "name":  "Affiliate Marketing",
+                        "supportTeams":  [
+                                             "Sales"
+                                         ],
+                        "primaryTeam":  "ContentCreation",
+                        "expectedMax":  2000,
+                        "status":  "MONITORING"
+                    },
+                    {
+                        "expectedMin":  300,
+                        "name":  "Content Creation",
+                        "supportTeams":  [
+
+                                         ],
+                        "primaryTeam":  "ContentCreation",
+                        "expectedMax":  2000,
+                        "status":  "MONITORING"
+                    },
+                    {
+                        "expectedMin":  3000,
+                        "name":  "AI Services \u0026 Automation",
+                        "supportTeams":  [
+                                             "ConsultingDelivery",
+                                             "QualityAssurance"
+                                         ],
+                        "primaryTeam":  "AIDevelopment",
+                        "expectedMax":  10000,
+                        "status":  "MONITORING"
+                    }
+                ],
+    "timestamp":  {
+                      "value":  "\/Date(1760577534269)\/",
+                      "DisplayHint":  2,
+                      "DateTime":  "neljapäev, 16. oktoober 2025 04:18:54"
+                  },
+    "totalOpportunities":  7,
+    "totalPotentialRevenue":  27500
+}
