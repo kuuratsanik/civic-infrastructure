@@ -1,0 +1,39 @@
+﻿{
+    "GitState":  {
+                     "Branch":  "main",
+                     "LastCommit":  "f71731e165758f1519292f40ee61f19cc121a499",
+                     "LastCommitMessage":  [
+                                               " Add Repository Purification Ceremony + .gitignore",
+                                               "",
+                                               " New Ceremony: Remove-LargeObjects.ps1",
+                                               "- Surgical removal of large binary objects from Git history",
+                                               "- Full governance with evidence anchoring",
+                                               "- 6-phase ceremonial workflow (validation, identification, correction, purification, validation, guidance)",
+                                               "- Creates audit trail in evidence/purification/",
+                                               "- Supports -WhatIf preview mode",
+                                               "",
+                                               " Documentation: README.md",
+                                               "- Complete usage guide",
+                                               "- Pre-ceremony checklist",
+                                               "- Phase-by-phase breakdown",
+                                               "- Recovery procedures",
+                                               "- Collaborator instructions",
+                                               "",
+                                               " Prevention: .gitignore",
+                                               "- Block large binary files (ISO, WIM, VHD, etc.)",
+                                               "- Protect API keys and secrets",
+                                               "- Exclude build artifacts",
+                                               "- Keep evidence anchors and documentation",
+                                               "",
+                                               " Purpose: Fix HTTP 500 push errors from 2.88GB pack file",
+                                               " Status: Ready to execute ceremony",
+                                               ""
+                                           ],
+                     "ObjectCount":  "count: 1168\r\nsize: 3030974\r\nin-pack: 1481\r\npacks: 1\r\nsize-pack: 121974\r\nprune-packable: 1150\r\ngarbage: 0\r\nsize-garbage: 0\r\n"
+                 },
+    "Repository":  "c:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder",
+    "Timestamp":  "2025-10-16T20:41:31.4835901+03:00",
+    "Machine":  "SVEN-DELL",
+    "User":  "svenk",
+    "Phase":  "PRE-CEREMONY"
+}
