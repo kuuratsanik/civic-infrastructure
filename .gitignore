@@ -1,0 +1,149 @@
+# ============================================================================
+# CIVIC INFRASTRUCTURE - GOVERNANCE-ANCHORED .GITIGNORE
+# ============================================================================
+
+# Large Binary Files (CRITICAL - Prevent HTTP 500 errors)
+*.iso
+*.wim
+*.vhd
+*.vhdx
+*.vmdk
+*.img
+*.bin
+*.dmg
+
+# Archives (Large)
+*.zip
+*.rar
+*.7z
+*.tar.gz
+*.tar.bz2
+*.gz
+*.bz2
+
+# Video Files
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.flv
+*.wmv
+
+# Build Artifacts
+*.exe
+*.dll
+*.so
+*.dylib
+*.lib
+*.a
+*.pdb
+*.exp
+
+# Temporary Files
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# IDE & Editor
+.vs/
+.vscode/settings.json
+.vscode/launch.json
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
+logs/
+*.jsonl
+
+# API Keys & Secrets (SECURITY)
+config.json
+secrets.json
+*.key
+*.pem
+*.p12
+*.pfx
+.env
+.env.local
+
+# Node Modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+env/
+
+# AI-Generated Videos (Dropshipping)
+revenue-streams/shopify-dropshipping/videos/*.mp4
+revenue-streams/shopify-dropshipping/automation/logs/
+
+# Windows Build Artifacts
+workspace/windows11-base/sources/*.wim
+workspace/windows11-base/sources/*.esd
+workspace/output/*.iso
+
+# Evidence (Keep structure, not content - except anchors)
+evidence/builds/*.iso
+evidence/builds/*.wim
+evidence/bundles/*.tar.gz
+
+# Council (Keep manifests, not large data)
+council/keys/**/private.key
+
+# Logs (Keep structure, not old logs)
+logs/*.log
+!logs/.gitkeep
+
+# Test Outputs
+test-results/
+coverage/
+
+# Backup Files
+*.backup
+*_backup
+backup/
+
+# Database Files
+*.db
+*.sqlite
+*.sqlite3
+
+# ============================================================================
+# KEEP THESE FILES (Exceptions)
+# ============================================================================
+
+# Evidence Anchors (REQUIRED for governance)
+!evidence/**/*.json
+!evidence/**/*.md
+
+# Configuration Templates (Safe to commit)
+!**/config.template.json
+!**/*.example.json
+
+# Documentation (Always commit)
+!**/*.md
+!**/*.txt
+
+# Scripts (Always commit)
+!**/*.ps1
+!**/*.sh
+
+# Git Keep Files
+!**/.gitkeep
