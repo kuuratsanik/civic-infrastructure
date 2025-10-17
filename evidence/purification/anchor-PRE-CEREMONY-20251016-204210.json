@@ -1,0 +1,16 @@
+﻿{
+    "GitState":  {
+                     "Branch":  "main",
+                     "LastCommit":  "7b7a5272f537b94883f45fcdb301dc04d21879b6",
+                     "LastCommitMessage":  [
+                                               "Evidence: Pre-ceremony anchor created",
+                                               ""
+                                           ],
+                     "ObjectCount":  "count: 1173\r\nsize: 3030981\r\nin-pack: 1481\r\npacks: 1\r\nsize-pack: 121974\r\nprune-packable: 1150\r\ngarbage: 0\r\nsize-garbage: 0\r\n"
+                 },
+    "Repository":  "c:\\Users\\svenk\\OneDrive\\All_My_Projects\\New folder",
+    "Timestamp":  "2025-10-16T20:42:10.1133700+03:00",
+    "Machine":  "SVEN-DELL",
+    "User":  "svenk",
+    "Phase":  "PRE-CEREMONY"
+}

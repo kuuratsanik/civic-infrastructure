@@ -1,0 +1,606 @@
+# Agent Mandate Schema v1.0
+# Defines the structure for sovereign agent role definitions
+# Governs identity, capabilities, constraints, and accountability
+
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "https://civic-infrastructure.local/schemas/agent-mandate/v1.0"
+title: "Agent Mandate"
+description: "Complete specification for an intelligent agent's role, scope, and governance"
+
+type: object
+required:
+  - role
+  - mandate
+  - kpis
+  - lineage
+  - risk_tiers
+
+properties:
+
+  # === IDENTITY ===
+  role:
+    type: string
+    pattern: "^[a-z0-9-]+$"
+    description: "Unique agent role identifier (lowercase, hyphenated)"
+    examples:
+      - "commerce-supplier-verifier"
+      - "build-iso-optimizer"
+      - "civic-ceremony-orchestrator"
+
+  version:
+    type: string
+    pattern: "^\\d+\\.\\d+\\.\\d+$"
+    description: "Semantic version of this mandate"
+    default: "1.0.0"
+
+  created:
+    type: string
+    format: date-time
+    description: "ISO 8601 timestamp of mandate creation"
+
+  updated:
+    type: string
+    format: date-time
+    description: "ISO 8601 timestamp of last update"
+
+  status:
+    type: string
+    enum: ["active", "suspended", "quarantined", "retired"]
+    description: "Current operational status"
+    default: "active"
+
+  # === MANDATE (Scope and Permissions) ===
+  mandate:
+    type: object
+    required:
+      - scope
+      - constraints
+    properties:
+
+      scope:
+        type: array
+        description: "Allowed actions this agent can perform"
+        minItems: 1
+        items:
+          type: string
+          examples:
+            - "supplier_onboarding"
+            - "contract_update"
+            - "compliance_check"
+            - "iso_construction"
+            - "driver_injection"
+
+      constraints:
+        type: array
+        description: "Non-negotiable legal, safety, and policy rules"
+        items:
+          type: string
+          examples:
+            - "EU consumer protection and product safety"
+            - "GDPR for PII handling"
+            - "No unverified payment channels"
+            - "Windows 11 Pro 24H2+ only"
+
+      data_access:
+        type: object
+        description: "Permitted data sources and access levels"
+        properties:
+          allowed_sources:
+            type: array
+            items:
+              type: string
+              examples:
+                - "supplier_docs"
+                - "regulatory_db"
+                - "cert_registry"
+                - "windows11-base"
+
+          access_level:
+            type: string
+            enum: ["read-only", "read-write", "read-write-delete"]
+            default: "read-only"
+
+          pii_handling:
+            type: string
+            enum: ["no-access", "tokenized", "scoped-cell", "full-access"]
+            description: "Level of PII access permitted"
+            default: "no-access"
+
+      escalation_paths:
+        type: array
+        description: "Roles to escalate to when constraints violated or uncertainty high"
+        items:
+          type: object
+          properties:
+            condition:
+              type: string
+              description: "When to escalate"
+            escalate_to:
+              type: string
+              description: "Target role identifier"
+        examples:
+          - condition: "Compliance violation detected"
+            escalate_to: "governance-cell-manager"
+          - condition: "Uncertainty > 0.3"
+            escalate_to: "domain-expert-human"
+
+  # === KPIs (Performance Expectations) ===
+  kpis:
+    type: object
+    required:
+      - precision
+      - latency
+      - compliance_ratio
+    properties:
+
+      precision:
+        type: string
+        pattern: "^(>=|<=|>|<|=) \\d+(\\.\\d+)?%?$"
+        description: "Accuracy requirement across primary task"
+        examples:
+          - ">= 98%"
+          - ">= 0.95"
+
+      recall:
+        type: string
+        pattern: "^(>=|<=|>|<|=) \\d+(\\.\\d+)?%?$"
+        description: "Coverage requirement (optional, for classification tasks)"
+        examples:
+          - ">= 0.90"
+
+      latency:
+        type: string
+        pattern: "^<= \\d+(s|m|h)$"
+        description: "Maximum acceptable response time"
+        examples:
+          - "<= 120s"
+          - "<= 2m"
+          - "<= 1h"
+
+      compliance_ratio:
+        type: string
+        pattern: "^(>=|<=|>|<|=) \\d+(\\.\\d+)?%?$"
+        description: "Percentage of decisions meeting all constraints"
+        examples:
+          - "100%"
+          - ">= 99.5%"
+
+      cost_per_decision:
+        type: string
+        pattern: "^<= (€|\\$)\\d+(\\.\\d+)?$"
+        description: "Maximum cost (compute + licensing) per decision"
+        examples:
+          - "<= €0.50"
+          - "<= $1.00"
+
+      monthly_budget:
+        type: string
+        pattern: "^<= (€|\\$)\\d+(,\\d{3})*(\\.\\d+)?$"
+        description: "Total monthly operational budget"
+        examples:
+          - "<= €500"
+          - "<= $1,000"
+
+  # === CAPABILITIES (What Agent Can Do) ===
+  capabilities:
+    type: object
+    properties:
+
+      retrieval:
+        type: array
+        description: "Data sources agent can query"
+        items:
+          type: string
+          examples:
+            - "supplier_docs"
+            - "regulatory_db"
+            - "shipment_tracking"
+            - "windows_update_catalog"
+
+      validators:
+        type: array
+        description: "Validation modules agent can invoke"
+        items:
+          type: string
+          examples:
+            - "contract_clause_checker"
+            - "cert_expiry_monitor"
+            - "iso_integrity_validator"
+
+      models:
+        type: array
+        description: "AI models agent can use"
+        items:
+          type: object
+          properties:
+            name:
+              type: string
+              examples:
+                - "gpt-4"
+                - "claude-3-opus"
+                - "ollama/llama3.2"
+            purpose:
+              type: string
+              examples:
+                - "contract_analysis"
+                - "risk_assessment"
+            version:
+              type: string
+              examples:
+                - "2024-11-20"
+                - "v1.2.3"
+
+      tools:
+        type: array
+        description: "External tools/APIs agent can invoke"
+        items:
+          type: string
+          examples:
+            - "PowerShell"
+            - "Git"
+            - "oscdimg.exe"
+            - "dism.exe"
+
+  # === LINEAGE (Audit and Traceability) ===
+  lineage:
+    type: object
+    required:
+      - emit_events
+    properties:
+
+      emit_events:
+        type: boolean
+        description: "Whether agent must emit lineage events for all decisions"
+        default: true
+
+      witness_required:
+        type: array
+        description: "Actions requiring witness attestation"
+        items:
+          type: string
+          examples:
+            - "contract_update"
+            - "payment_integration"
+            - "iso_signing"
+
+      evidence_retention_days:
+        type: integer
+        description: "How long to keep evidence bundles"
+        minimum: 30
+        default: 365
+        examples:
+          - 90
+          - 365
+          - 2555  # 7 years for legal compliance
+
+      replay_enabled:
+        type: boolean
+        description: "Whether decisions can be deterministically replayed"
+        default: true
+
+      signature_required:
+        type: boolean
+        description: "Whether lineage events must be cryptographically signed"
+        default: true
+
+  # === RISK TIERS (Approval Thresholds) ===
+  risk_tiers:
+    type: object
+    description: "Actions categorized by impact with approval requirements"
+    properties:
+
+      low_impact:
+        type: object
+        properties:
+          actions:
+            type: array
+            items:
+              type: string
+              examples:
+                - "data_fetch"
+                - "read_log"
+          signatures_required:
+            type: integer
+            minimum: 1
+            default: 1
+          witness_count:
+            type: integer
+            minimum: 0
+            default: 0
+
+      medium_impact:
+        type: object
+        properties:
+          actions:
+            type: array
+            items:
+              type: string
+              examples:
+                - "config_update"
+                - "price_change"
+          signatures_required:
+            type: integer
+            minimum: 2
+            default: 2
+          witness_count:
+            type: integer
+            minimum: 1
+            default: 1
+
+      high_impact:
+        type: object
+        properties:
+          actions:
+            type: array
+            items:
+              type: string
+              examples:
+                - "new_supplier_activation"
+                - "iso_production_release"
+          signatures_required:
+            type: integer
+            minimum: 3
+            default: 3
+          witness_count:
+            type: integer
+            minimum: 2
+            default: 2
+
+      critical_impact:
+        type: object
+        properties:
+          actions:
+            type: array
+            items:
+              type: string
+              examples:
+                - "policy_change"
+                - "key_rotation"
+                - "mandate_update"
+          signatures_required:
+            type: integer
+            minimum: 5
+            default: 5
+          witness_count:
+            type: integer
+            minimum: 3
+            default: 3
+
+  # === ROUTING (Performance Market) ===
+  routing:
+    type: object
+    description: "SLA and cost profile for task auction system"
+    properties:
+
+      sla:
+        type: object
+        properties:
+          p50_latency:
+            type: string
+            pattern: "^\\d+(s|m|h)$"
+            examples:
+              - "30s"
+              - "5m"
+
+          p95_latency:
+            type: string
+            pattern: "^\\d+(s|m|h)$"
+            examples:
+              - "120s"
+              - "15m"
+
+          p99_latency:
+            type: string
+            pattern: "^\\d+(s|m|h)$"
+            examples:
+              - "300s"
+              - "30m"
+
+          success_rate:
+            type: number
+            minimum: 0
+            maximum: 1
+            examples:
+              - 0.98
+              - 0.95
+
+          max_cost:
+            type: string
+            pattern: "^(€|\\$)\\d+(\\.\\d+)?(/decision|/task)?$"
+            examples:
+              - "€0.50/decision"
+              - "$2.00/task"
+
+      reputation:
+        type: object
+        properties:
+          current_credits:
+            type: number
+            description: "Accumulated reputation score"
+            minimum: 0
+            examples:
+              - 1247
+              - 843
+
+          calibration_score:
+            type: number
+            description: "Historical accuracy vs. claimed performance"
+            minimum: 0
+            maximum: 1
+            examples:
+              - 0.94
+              - 0.87
+
+          last_calibration:
+            type: string
+            format: date-time
+            description: "When calibration was last updated"
+
+  # === SAFETY (Sandboxing and Guards) ===
+  safety:
+    type: object
+    properties:
+
+      sandbox_required:
+        type: boolean
+        description: "Whether agent must run in isolated execution environment"
+        default: false
+
+      resource_limits:
+        type: object
+        properties:
+          max_memory_mb:
+            type: integer
+            examples:
+              - 2048
+              - 4096
+
+          max_cpu_percent:
+            type: integer
+            minimum: 1
+            maximum: 100
+            examples:
+              - 50
+              - 80
+
+          max_execution_time:
+            type: string
+            pattern: "^\\d+(s|m|h)$"
+            examples:
+              - "300s"
+              - "1h"
+
+      output_guards:
+        type: array
+        description: "Validators to run on all agent outputs"
+        items:
+          type: string
+          examples:
+            - "legal_compliance_check"
+            - "safety_constraint_validator"
+            - "data_minimization_audit"
+
+      context_firewall:
+        type: boolean
+        description: "Prevent cross-domain data leakage"
+        default: true
+
+  # === METADATA ===
+  metadata:
+    type: object
+    description: "Additional governance and operational metadata"
+    properties:
+
+      domain:
+        type: string
+        description: "Primary domain cell this agent belongs to"
+        examples:
+          - "commerce"
+          - "build"
+          - "civic"
+          - "audit"
+
+      owner:
+        type: string
+        description: "Responsible party (team or individual)"
+        examples:
+          - "commerce-cell-manager"
+          - "build-team-lead"
+
+      contact:
+        type: string
+        format: email
+        description: "Escalation contact for agent issues"
+        examples:
+          - "governance@civic-infrastructure.local"
+
+      documentation:
+        type: string
+        format: uri
+        description: "Link to detailed agent documentation"
+        examples:
+          - "docs/agents/commerce-supplier-verifier.md"
+
+      source_code:
+        type: string
+        description: "Path to agent implementation"
+        examples:
+          - "agents/civic/supplier-verifier.ps1"
+
+      dependencies:
+        type: array
+        description: "Other agents or services this agent relies on"
+        items:
+          type: string
+          examples:
+            - "agent-rag-verifier"
+            - "regulatory-db-service"
+
+      tags:
+        type: array
+        description: "Searchable keywords"
+        items:
+          type: string
+          examples:
+            - "compliance"
+            - "eu-regulations"
+            - "supplier-onboarding"
+
+# === EXAMPLES ===
+examples:
+  - role: "commerce-supplier-verifier"
+    version: "1.0.0"
+    created: "2025-10-16T00:00:00Z"
+    status: "active"
+    mandate:
+      scope:
+        - "supplier_onboarding"
+        - "contract_update"
+        - "compliance_check"
+      constraints:
+        - "EU consumer protection and product safety"
+        - "GDPR for PII handling"
+        - "No unverified payment channels"
+      data_access:
+        allowed_sources:
+          - "supplier_docs"
+          - "regulatory_db"
+          - "cert_registry"
+        access_level: "read-only"
+        pii_handling: "tokenized"
+      escalation_paths:
+        - condition: "Compliance violation detected"
+          escalate_to: "governance-cell-manager"
+    kpis:
+      precision: ">= 98%"
+      latency: "<= 2m"
+      compliance_ratio: "100%"
+    capabilities:
+      retrieval:
+        - "supplier_docs"
+        - "regulatory_db"
+      validators:
+        - "contract_clause_checker"
+        - "cert_expiry_monitor"
+    lineage:
+      emit_events: true
+      witness_required:
+        - "contract_update"
+      evidence_retention_days: 365
+      replay_enabled: true
+      signature_required: true
+    risk_tiers:
+      high_impact:
+        actions:
+          - "new_supplier_activation"
+        signatures_required: 3
+        witness_count: 2
+    routing:
+      sla:
+        p95_latency: "120s"
+        success_rate: 0.98
+        max_cost: "€0.50/decision"
+    metadata:
+      domain: "commerce"
+      owner: "commerce-cell-manager"
+      documentation: "docs/agents/commerce-supplier-verifier.md"

@@ -1,0 +1,47 @@
+# Terraform Example Configuration
+# Copy this file to terraform.tfvars and customize for your deployment
+
+# Environment: dev, staging, or prod
+environment = "dev"
+
+# Who is deploying this infrastructure
+deployed_by = "civic-infrastructure"
+
+# Azure region (westeurope, northeurope, eastus, etc.)
+azure_location = "westeurope"
+
+# Azure OpenAI Configuration
+openai_sku = "S0"  # Standard SKU
+
+# GPT-4 Turbo capacity (tokens per minute / 1000)
+gpt4_capacity = 10
+
+# GPT-4o capacity (tokens per minute / 1000)
+gpt4o_capacity = 10
+
+# Text embedding capacity (tokens per minute / 1000)
+embedding_capacity = 10
+
+# Network Access Control
+# "Allow" = Open access (default for dev)
+# "Deny" = Restricted access (recommended for prod)
+openai_network_acls_default_action = "Allow"
+
+# Optional: Restrict access to specific IP ranges
+# allowed_ip_ranges = ["203.0.113.0/24", "198.51.100.0/24"]
+
+# Storage replication type
+# LRS = Locally Redundant Storage (cheapest)
+# GRS = Geo-Redundant Storage (recommended for prod)
+storage_replication_type = "LRS"
+
+# Enable Azure Functions for AI agents
+enable_functions = false
+
+# Azure Functions SKU (only used if enable_functions = true)
+# Y1 = Consumption plan (pay per execution)
+# EP1 = Elastic Premium (faster cold starts)
+functions_sku = "Y1"
+
+# Enable Azure Key Vault for secrets management
+enable_key_vault = false

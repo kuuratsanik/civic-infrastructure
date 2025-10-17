@@ -1,0 +1,185 @@
+# Agent Mandate: Commerce Supplier Verifier
+# Sovereign role definition for supplier onboarding and compliance verification
+# Created: 2025-10-16 | Status: Active | Version: 1.0.0
+
+role: "commerce-supplier-verifier"
+version: "1.0.0"
+created: "2025-10-16T00:00:00Z"
+updated: "2025-10-16T00:00:00Z"
+status: "active"
+
+# === MANDATE (Scope and Permissions) ===
+mandate:
+  scope:
+    - "supplier_onboarding"
+    - "contract_update"
+    - "compliance_check"
+    - "certificate_verification"
+    - "product_safety_audit"
+
+  constraints:
+    - "EU consumer protection directives (2005/29/EC, 2011/83/EU)"
+    - "Product safety regulation (EU 2023/988)"
+    - "GDPR for PII handling (Art. 6, 32, 44)"
+    - "No unverified payment channels"
+    - "Mandatory CE marking verification for EU market"
+    - "Returns policy must comply with 14-day cooling-off period"
+
+  data_access:
+    allowed_sources:
+      - "supplier_docs"           # Uploaded supplier documentation
+      - "regulatory_db"            # EU regulatory database
+      - "cert_registry"            # Certificate authority registry
+      - "shipment_tracking"        # Delivery performance data
+      - "consumer_complaints_db"   # Historical complaint records
+    access_level: "read-only"
+    pii_handling: "tokenized"     # Supplier contact info tokenized for cross-cell refs
+
+  escalation_paths:
+    - condition: "Compliance violation detected"
+      escalate_to: "governance-cell-manager"
+    - condition: "Certificate expiry within 30 days"
+      escalate_to: "commerce-cell-manager"
+    - condition: "Uncertainty score > 0.3"
+      escalate_to: "domain-expert-human"
+
+# === KPIs (Performance Expectations) ===
+kpis:
+  precision: ">= 98%"              # Across claim verification tasks
+  recall: ">= 95%"                 # Catch rate for compliance violations
+  latency: "<= 2m"                 # Per supplier file analysis
+  compliance_ratio: "100%"         # All mandatory clauses must be present
+  cost_per_decision: "<= €0.50"
+  monthly_budget: "<= €500"
+
+# === CAPABILITIES ===
+capabilities:
+  retrieval:
+    - "supplier_docs"
+    - "regulatory_db"
+    - "cert_registry"
+    - "shipment_tracking"
+    - "consumer_complaints_db"
+
+  validators:
+    - "contract_clause_checker"   # Verifies mandatory GDPR processor clauses
+    - "cert_expiry_monitor"       # Checks SSL, CE, ISO certificates
+    - "returns_policy_validator"  # EU 14-day cooling-off period
+    - "warranty_terms_checker"    # 2-year warranty compliance
+    - "ce_mark_verifier"          # Authenticates CE marking
+
+  models:
+    - name: "gpt-4"
+      purpose: "contract_analysis"
+      version: "2024-11-20"
+    - name: "ollama/llama3.2"
+      purpose: "document_extraction"
+      version: "latest"
+
+  tools:
+    - "PowerShell"
+    - "PDF-Parser"
+    - "OCR-Engine"
+
+# === LINEAGE (Audit and Traceability) ===
+lineage:
+  emit_events: true
+  witness_required:
+    - "contract_update"
+    - "payment_integration"
+    - "supplier_activation"
+  evidence_retention_days: 2555    # 7 years for legal compliance
+  replay_enabled: true
+  signature_required: true
+
+# === RISK TIERS (Approval Thresholds) ===
+risk_tiers:
+  low_impact:
+    actions:
+      - "certificate_expiry_check"
+      - "document_fetch"
+    signatures_required: 1
+    witness_count: 0
+
+  medium_impact:
+    actions:
+      - "contract_update"
+      - "price_change"
+      - "shipping_terms_update"
+    signatures_required: 2
+    witness_count: 1
+
+  high_impact:
+    actions:
+      - "new_supplier_activation"
+      - "payment_integration"
+      - "compliance_waiver"
+    signatures_required: 3
+    witness_count: 2
+
+  critical_impact:
+    actions:
+      - "mandate_update"
+      - "constraint_override"
+    signatures_required: 5
+    witness_count: 3
+
+# === ROUTING (Performance Market) ===
+routing:
+  sla:
+    p50_latency: "45s"
+    p95_latency: "120s"
+    p99_latency: "180s"
+    success_rate: 0.98
+    max_cost: "€0.50/decision"
+
+  reputation:
+    current_credits: 0              # Initial bootstrap
+    calibration_score: 1.0          # Perfect until first calibration
+    last_calibration: null
+
+# === SAFETY (Sandboxing and Guards) ===
+safety:
+  sandbox_required: false           # Low-risk read-only operations
+
+  resource_limits:
+    max_memory_mb: 1024
+    max_cpu_percent: 50
+    max_execution_time: "5m"
+
+  output_guards:
+    - "legal_compliance_check"
+    - "data_minimization_audit"
+    - "pii_redaction_validator"
+
+  context_firewall: true
+
+# === METADATA ===
+metadata:
+  domain: "commerce"
+  owner: "commerce-cell-manager"
+  contact: "governance@civic-infrastructure.local"
+  documentation: "docs/agents/commerce-supplier-verifier.md"
+  source_code: "agents/civic/supplier-verifier.ps1"
+  dependencies:
+    - "agent-rag-verifier"
+    - "regulatory-db-service"
+  tags:
+    - "compliance"
+    - "eu-regulations"
+    - "supplier-onboarding"
+    - "product-safety"
+    - "gdpr"
+
+# === GOVERNANCE SIGNATURES ===
+# Multi-sig approval for mandate activation
+signatures:
+  - role: "commerce-cell-manager"
+    signature: "pending"
+    timestamp: null
+  - role: "governance-cell-manager"
+    signature: "pending"
+    timestamp: null
+  - role: "witness-audit-01"
+    signature: "pending"
+    timestamp: null

@@ -1,0 +1,12 @@
+{
+    "timestamp":  "2025-10-17T02:50:58.8662622+03:00",
+    "files":  [
+                  "deployment-transcript.log"
+              ],
+    "resource_group":  "sentient-workspace-rg",
+    "deployment_id":  "20251017-025058",
+    "success":  null,
+    "error":  null,
+    "mode":  "LocalOnly",
+    "actor":  "svenk"
+}
