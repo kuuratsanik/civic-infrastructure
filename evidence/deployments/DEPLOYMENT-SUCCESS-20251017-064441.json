@@ -1,0 +1,66 @@
+{
+    "compressed_size":  "51.82 MiB",
+    "technologies":  [
+                         "n8n automation",
+                         "Pangolin reverse proxy",
+                         "GPU passthrough (PECU)",
+                         "Vault/Doppler secrets",
+                         "10GbE networking",
+                         "VLAN segmentation",
+                         "Terraform IaC",
+                         "Docker Compose",
+                         "Multi-agent AI"
+                     ],
+    "key_deliverables":  {
+                             "september_analysis":  "SEPTEMBER-REPORT.md",
+                             "ai_orchestrator":  "agents/master/sentient-orchestrator.ps1",
+                             "n8n_deployment":  "docker/n8n/docker-compose.yml",
+                             "terraform_infra":  "terraform/azure/sentient-workspace.tf",
+                             "annual_report":  "2025-ANNUAL-REPORT.md",
+                             "android_app":  "mobile/android/"
+                         },
+    "timestamp":  "2025-10-17T06:44:41.7772533+03:00",
+    "commit_shas":  [
+                        "e286e34",
+                        "f58e14e",
+                        "eb32fc3",
+                        "0f9b7d0",
+                        "ba00141"
+                    ],
+    "governance":  {
+                       "audit_trail":  "logs/council_ledger.jsonl",
+                       "chain_integrity":  "verified",
+                       "total_records":  14,
+                       "framework":  "Multi-agent DAO"
+                   },
+    "files_deployed":  125,
+    "commits_pushed":  5,
+    "deployment_id":  "CIVIC-DEPLOY-20251017-064441",
+    "total_objects":  1668,
+    "push_speed":  "90.55 MiB/s",
+    "blockchain_record":  13,
+    "status":  "SUCCESS",
+    "blockchain_records":  [
+                               0,
+                               1,
+                               2,
+                               3,
+                               4,
+                               5,
+                               6,
+                               7,
+                               8,
+                               9,
+                               10,
+                               11,
+                               12,
+                               13
+                           ],
+    "repository":  {
+                       "branch":  "main",
+                       "owner":  "kuuratsanik",
+                       "url":  "https://github.com/kuuratsanik/civic-infrastructure",
+                       "name":  "civic-infrastructure"
+                   },
+    "insertions":  48859
+}

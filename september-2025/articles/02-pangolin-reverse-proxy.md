@@ -1,8 +1,8 @@
 # Article Analysis: Pangolin Reverse Proxy for Home Labs
 
-**Source**: https://www.virtualizationhowto.com/2025/09/why-pangolin-is-the-one-reverse-proxy-id-pick-if-i-was-starting-my-home-lab-today/  
-**Date**: September 29, 2025  
-**Category**: Home Lab  
+**Source**: https://www.virtualizationhowto.com/2025/09/why-pangolin-is-the-one-reverse-proxy-id-pick-if-i-was-starting-my-home-lab-today/
+**Date**: September 29, 2025
+**Category**: Home Lab
 **Author**: Brandon Lee
 
 ## Executive Summary
@@ -37,7 +37,7 @@ Pangolin is an advanced open-source reverse proxy that combines the simplicity o
 Services:
   - Traditional: IIS reverse proxy + manual SSL management
   - Modern: Pangolin container with automatic Let's Encrypt
-  
+
 Governance:
   - Automated certificate lifecycle (90-day renewal)
   - Version-controlled proxy configurations
@@ -65,14 +65,14 @@ function Install-PangolinProxy {
         [string]$CloudManaged = $true,
         [string]$Domain
     )
-    
+
     # Pull Pangolin installer
     Invoke-WebRequest -Uri "https://digpangolin.com/get-installer.sh" `
         -OutFile "C:\civic-infrastructure\pangolin-installer.sh"
-    
+
     # Deploy via WSL2
     wsl bash -c "bash C:\civic-infrastructure\pangolin-installer.sh"
-    
+
     # Log to blockchain
     Add-BlockchainRecord -Action "Pangolin Deployed" `
         -Metadata @{ Domain = $Domain; CloudManaged = $CloudManaged }
@@ -481,5 +481,5 @@ Pangolin represents a paradigm shift in home lab reverse proxies, combining the 
 
 ---
 
-*Analysis completed as part of September 2025 civic infrastructure research.*  
+*Analysis completed as part of September 2025 civic infrastructure research.*
 *See `september-2025/implementation-roadmap.md` for full integration plan.*

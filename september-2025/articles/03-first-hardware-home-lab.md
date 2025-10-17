@@ -1,8 +1,8 @@
 # Article Analysis: Essential Home Lab Hardware Components
 
-**Source**: https://www.virtualizationhowto.com/2025/09/the-first-hardware-i-always-buy-for-any-home-lab/  
-**Date**: September 26, 2025  
-**Category**: Home Lab  
+**Source**: https://www.virtualizationhowto.com/2025/09/the-first-hardware-i-always-buy-for-any-home-lab/
+**Date**: September 26, 2025
+**Category**: Home Lab
 **Author**: Brandon Lee
 
 ## Executive Summary
@@ -181,14 +181,14 @@ Tier 1 - Bare Minimum ($400-600):
   Switch: Netgear GS108T-300NAS (~$80)
     - 8x 1 GbE managed ports
     - VLAN support for network segmentation
-  
+
   Compute: Use existing Windows 11 workstation
     - No additional mini PC needed yet
-  
+
   UPS: APC Back-UPS Pro 1000VA (~$180)
     - Protects workstation + switch
     - Graceful shutdown automation
-  
+
   Storage: External USB 3.0 SSD (2TB) (~$150)
     - Backup evidence/ directory
     - Separate from primary OS drive
@@ -197,30 +197,30 @@ Tier 2 - Recommended ($1500-2000):
   Switch: MikroTik CRS310-8G+2S+IN (~$210)
     - 2.5G ports for future expansion
     - 10G uplinks ready
-  
+
   Compute: Geekom A5 2025 + existing workstation (~$600)
     - Geekom runs Proxmox (isolated test VMs)
     - Existing workstation runs main civic infrastructure
-  
+
   UPS: CyberPower CP1500PFCLCD (~$250)
     - Pure sine wave
     - Enough capacity for both machines + switch
-  
+
   Storage: TerraMaster F2 (2-bay NAS) (~$400)
     - RAID 1 mirroring for evidence/
     - Automated backups via n8n
 
 Tier 3 - Production-Ready ($3000-4000):
   Switch: MikroTik CRS310-8G+2S+IN (~$210)
-  
+
   Compute: Minisforum MS-A2 x 2 (~$1600)
     - Proxmox cluster (HA)
     - Run civic infrastructure in VMs
     - Failover capabilities
-  
+
   UPS: CyberPower CP1500PFCLCD x 2 (~$500)
     - One UPS per mini PC + shared switch
-  
+
   Storage: Aoostar WTR Max (~$1200)
     - Hyperconverged NAS/compute
     - Can run Proxmox + TrueNAS in VMs
@@ -274,7 +274,7 @@ function Set-CivicVLANs {
     param(
         [string]$SwitchIP = "192.168.1.1"
     )
-    
+
     # Configure VLANs via MikroTik API
     $vlans = @(
         @{ ID = 10; Name = "Management"; Subnet = "192.168.10.0/24" },
@@ -282,12 +282,12 @@ function Set-CivicVLANs {
         @{ ID = 30; Name = "External"; Subnet = "192.168.30.0/24" },
         @{ ID = 40; Name = "IoT-Lab"; Subnet = "192.168.40.0/24" }
     )
-    
+
     foreach ($vlan in $vlans) {
         New-MikroTikVLAN -SwitchIP $SwitchIP -VLANID $vlan.ID -Name $vlan.Name
         Write-Host "✓ VLAN $($vlan.ID) ($($vlan.Name)) created" -ForegroundColor Green
     }
-    
+
     # Log to blockchain
     Add-BlockchainRecord -Action "VLAN Configuration Applied" `
         -Metadata @{ VLANs = $vlans.Count; Switch = $SwitchIP }
@@ -307,9 +307,9 @@ function Set-CivicVLANs {
 function Install-APCPowerChute {
     $downloadUrl = "https://www.apc.com/shop/us/en/products/PowerChute-Personal-Edition-v3-1-0-Windows"
     Invoke-WebRequest -Uri $downloadUrl -OutFile "C:\Temp\PowerChute.exe"
-    
+
     Start-Process -FilePath "C:\Temp\PowerChute.exe" -ArgumentList "/S" -Wait
-    
+
     # Configure graceful shutdown
     Set-APCShutdownDelay -Minutes 5
     Set-APCLowBatteryAction -Action "Shutdown"
@@ -319,9 +319,9 @@ function Install-APCPowerChute {
 function Install-CyberPowerPanel {
     $downloadUrl = "https://www.cyberpowersystems.com/products/software/power-panel-personal/"
     Invoke-WebRequest -Uri $downloadUrl -OutFile "C:\Temp\PowerPanel.exe"
-    
+
     Start-Process -FilePath "C:\Temp\PowerPanel.exe" -ArgumentList "/SILENT" -Wait
-    
+
     # Configure actions
     Set-PowerPanelShutdownScript -Path "C:\civic-infrastructure\scripts\Pre-Shutdown-Backup.ps1"
 }
@@ -330,25 +330,25 @@ function Install-CyberPowerPanel {
 # C:\civic-infrastructure\scripts\Pre-Shutdown-Backup.ps1
 function Invoke-PreShutdownBackup {
     Write-Host "UPS battery low - executing emergency backup..." -ForegroundColor Red
-    
+
     # 1. Stop n8n gracefully
     docker stop civic-n8n
-    
+
     # 2. Backup blockchain ledger
     Copy-Item "C:\civic-infrastructure\logs\council_ledger.jsonl" `
         -Destination "C:\civic-infrastructure\evidence\emergency-backup-$(Get-Date -Format 'yyyyMMdd-HHmmss').jsonl"
-    
+
     # 3. Export Docker volumes
     docker run --rm -v civic-n8n-data:/data -v C:\Backups:/backup `
         alpine tar czf /backup/n8n-emergency-$(Get-Date -Format 'yyyyMMdd').tar.gz /data
-    
+
     # 4. Log to blockchain (if time permits)
     Add-BlockchainRecord -Action "Emergency UPS Shutdown" `
         -Metadata @{ Reason = "Power loss"; Backup = "Completed" }
-    
+
     # 5. Sync all writes to disk
     Write-VolumeCache -DriveLetter C
-    
+
     Write-Host "✓ Emergency backup complete - system shutting down" -ForegroundColor Green
 }
 ```
@@ -395,26 +395,26 @@ function Set-CivicStorageTiers {
     # 1. Mount NAS as network drive
     New-PSDrive -Name "CivicNAS" -PSProvider FileSystem `
         -Root "\\192.168.20.100\civic-share" -Persist
-    
+
     # 2. Create directory structure
-    $nasDirs = @("evidence/builds", "evidence/hashes", "evidence/deltas", 
+    $nasDirs = @("evidence/builds", "evidence/hashes", "evidence/deltas",
                  "logs", "logs/backups")
     foreach ($dir in $nasDirs) {
         New-Item -Path "CivicNAS:\$dir" -ItemType Directory -Force
     }
-    
+
     # 3. Migrate blockchain ledger to NAS (primary copy)
     Copy-Item "C:\civic-infrastructure\logs\council_ledger.jsonl" `
         -Destination "CivicNAS:\logs\council_ledger.jsonl" -Force
-    
+
     # 4. Create symlink on C:\ for backward compatibility
     New-Item -ItemType SymbolicLink `
         -Path "C:\civic-infrastructure\logs\council_ledger.jsonl" `
         -Target "CivicNAS:\logs\council_ledger.jsonl"
-    
+
     # 5. Configure automated backups (n8n workflow)
     # See: docker/n8n/workflows/storage-backup.json
-    
+
     Write-Host "✓ Storage tiers configured" -ForegroundColor Green
     Write-Host "  - Primary: C:\ (scripts, configs)" -ForegroundColor Gray
     Write-Host "  - Secondary: CivicNAS (evidence, logs)" -ForegroundColor Gray
@@ -782,5 +782,5 @@ Hardware is the foundation upon which all civic infrastructure operates. Investi
 
 ---
 
-*Analysis completed as part of September 2025 civic infrastructure research.*  
+*Analysis completed as part of September 2025 civic infrastructure research.*
 *See `september-2025/implementation-roadmap.md` for hardware integration plan.*

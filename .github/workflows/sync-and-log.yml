@@ -1,0 +1,31 @@
+name: Sync and Lineage Log
+
+on:
+  schedule:
+    - cron: '0 2 * * *' # run daily at 02:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  id-token: write
+  actions: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup PowerShell
+        uses: pwsh/setup-pwsh@v2
+
+      - name: Run rebase-and-log script
+        run: |
+          pwsh -NoProfile -NonInteractive -Command ./scripts/ci/rebase-and-log.ps1 -AutoMode
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GIT_USER_NAME: 'civic-deploy-bot'
+          GIT_USER_EMAIL: 'deploy-bot@example.local'
