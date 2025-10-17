@@ -57,10 +57,7 @@ param(
     [string]$Source,
 
     [Parameter(Mandatory=$false)]
-    [string]$Query,
-
-    [Parameter(Mandatory=$false)]
-    [switch]$Verbose
+    [string]$Query
 )
 
 # Set error action
@@ -114,7 +111,8 @@ function Get-NextId {
     } | Measure-Object -Maximum).Maximum
     
     $nextNum = $maxNum + 1
-    return "$Prefix-$today-{0:D2}" -f $nextNum
+    $nextNumStr = "{0:00}" -f $nextNum
+    return "$Prefix-$today-$nextNumStr"
 }
 
 function New-Blueprint {
@@ -160,12 +158,12 @@ function New-Blueprint {
 2. **Validation**:
    - [How to verify it works]
 
-### Phase 2: Micro-Investment (Profit > `$100/month)
+### Phase 2: Micro-Investment (Profit > $$100/month)
 
 1. **Enhanced Implementation**:
    - [Improvements when budget allows]
 
-### Phase 3: Strategic Procurement (Profit > `$1,000/month)
+### Phase 3: Strategic Procurement (Profit > $$1,000/month)
 
 1. **Production Deployment**:
    - [Full-scale implementation]
