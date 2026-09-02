@@ -17,7 +17,10 @@
     "comms-bus-outlook": "34d79415-8052-418d-8008-a8744137d0ce",
     "comms-bus-linear": "519a697d-fcad-4cbd-a1f9-dfc0e49c422c",
     "comms-bus-github": "98e1e8f3-24a5-4f9c-9845-fb76795658b2",
+    "comms-bus-github-any": "7d4a7277-ef79-451a-8535-18b938c4a22e",
     "comms-bus-webhook": "3bedb9e5-1526-46f3-8086-f377805dec49"
   },
-  "linear_issue": "SVE-5"
+  "linear_issue": "SVE-5",
+  "github_issue": 2,
+  "github_branch": "comms-bus-cloud-kit"
 }

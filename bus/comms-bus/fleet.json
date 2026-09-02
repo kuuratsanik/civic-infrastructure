@@ -1,13 +1,22 @@
 {
-  "updated_at": "2026-09-02T06:59:00Z",
+  "updated_at": "2026-09-02T07:46:00Z",
   "lane": "civic",
+  "cloud_ack": null,
   "devices": {
     "pc-kuusalu": {
       "status": "dark",
       "last_heartbeat": null,
+      "last_local_seen": "2026-09-02T07:39:55Z",
       "agents": [],
-      "note": "No webhook POST yet. Expected after config.json is filled."
+      "note": "sandbox writes are local-only; live requires webhook result",
+      "last_seen": null,
+      "last_action": null,
+      "last_hop": null
     }
   },
-  "open": { "linear": "SVE-5", "github_issue": 2, "github_pr": 3 }
+  "open": {
+    "linear": "SVE-5",
+    "github_issue": 2,
+    "github_pr": 3
+  }
 }
