@@ -1,0 +1,13 @@
+{
+  "updated_at": "2026-09-02T06:59:00Z",
+  "lane": "civic",
+  "devices": {
+    "pc-kuusalu": {
+      "status": "dark",
+      "last_heartbeat": null,
+      "agents": [],
+      "note": "No webhook POST yet. Expected after config.json is filled."
+    }
+  },
+  "open": { "linear": "SVE-5", "github_issue": 2, "github_pr": 3 }
+}

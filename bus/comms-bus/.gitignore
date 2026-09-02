@@ -1,2 +1,3 @@
 config.json
-*.sent
+last-heartbeat.json
+*.sent.json

@@ -1,39 +1,30 @@
-# Civic comms-bus heartbeat. Cloud hop only. Does not execute remote commands.
+# Civic comms-bus heartbeat 2026. Cloud hop only.
 param(
     [string]$ConfigPath = (Join-Path $PSScriptRoot "config.json"),
-    [ValidateSet("heartbeat", "notify", "linear", "github", "gmail_draft", "route")]
     [string]$Action = "heartbeat",
     [string]$Subject = "heartbeat",
-    [string]$Status = "ok"
+    [string]$Status = "ok",
+    [int]$Retries = 2
 )
 $ErrorActionPreference = "Stop"
-if (-not (Test-Path $ConfigPath)) {
-    Write-Error "Missing $ConfigPath — copy config.example.json to config.json and set webhook_url."
-}
+$allowed = @("heartbeat", "notify", "linear", "github", "gmail_draft", "route")
+if ($allowed -notcontains $Action) { $Action = "notify" }
+if (-not (Test-Path $ConfigPath)) { Write-Error "Missing $ConfigPath" }
 $config = Get-Content -Raw -Path $ConfigPath | ConvertFrom-Json
-if (-not $config.webhook_url -or $config.webhook_url -like "PASTE_*") {
-    Write-Error "Set webhook_url in config.json from the comms-bus-webhook automation card."
-}
-$packet = [ordered]@{
-    from_agent = $config.from_agent
-    to_agent   = "comms-bus"
-    channel    = "webhook"
-    action     = $Action
-    subject    = $Subject
-    lane       = "civic"
-    payload    = [ordered]@{
-        device = $config.device
-        agents = @("heartbeat")
-        status = $Status
-        queue  = 0
-    }
-}
+if (-not $config.webhook_url -or $config.webhook_url -like "PASTE_*") { Write-Error "Set webhook_url" }
+$now = [DateTimeOffset]::UtcNow.ToString("o")
+$packet = [ordered]@{ from_agent=$config.from_agent; to_agent="comms-bus"; channel="webhook"; action=$Action; subject=$Subject; lane="civic"; timestamp=$now; packet_id="hb-$($config.device)-$([DateTimeOffset]::UtcNow.ToUnixTimeSeconds())"; payload=[ordered]@{ device=$config.device; agents=@("heartbeat"); status=$Status; queue=0; year=2026 } }
 $body = $packet | ConvertTo-Json -Depth 6 -Compress
-Write-Host "POST $($config.webhook_url)"
-try {
-    $res = Invoke-RestMethod -Method Post -Uri $config.webhook_url -ContentType "application/json" -Body $body
-    $res | ConvertTo-Json -Depth 6
-} catch {
-    Write-Error $_
-    exit 1
+$attempt = 0
+while ($true) {
+    $attempt++
+    try {
+        $res = Invoke-RestMethod -Method Post -Uri $config.webhook_url -ContentType "application/json; charset=utf-8" -Body $body -TimeoutSec 30
+        ([ordered]@{ ok=$true; at=$now; device=$config.device }) | ConvertTo-Json | Set-Content (Join-Path $PSScriptRoot "last-heartbeat.json") -Encoding utf8
+        $res | ConvertTo-Json -Depth 6
+        break
+    } catch {
+        if ($attempt -gt $Retries) { Write-Error $_; exit 1 }
+        Start-Sleep -Seconds (3 * $attempt)
+    }
 }
