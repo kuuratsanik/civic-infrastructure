@@ -1,0 +1,9 @@
+{
+  "webhook_url": "PASTE_COMMS_BUS_WEBHOOK_URL_HERE",
+  "webhook_task_id": "3bedb9e5-1526-46f3-8086-f377805dec49",
+  "device": "pc-kuusalu",
+  "from_agent": "pc-kuusalu",
+  "lane": "civic",
+  "interval_seconds": 900,
+  "sven_email": "sven.katkosilt@gmail.com"
+}

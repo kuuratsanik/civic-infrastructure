@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "comms-bus-packet",
+  "title": "Comms bus packet",
+  "type": "object",
+  "required": ["from_agent", "action"],
+  "additionalProperties": false,
+  "properties": {
+    "from_agent": { "type": "string", "minLength": 1 },
+    "to_agent": { "type": "string", "default": "comms-bus" },
+    "channel": {
+      "type": "string",
+      "enum": ["webhook", "gmail", "outlook", "linear", "github", "local-bus"]
+    },
+    "action": {
+      "type": "string",
+      "enum": ["notify", "heartbeat", "linear", "github", "gmail_draft", "route"]
+    },
+    "subject": { "type": "string" },
+    "warrant_id": { "type": "string" },
+    "lane": {
+      "type": "string",
+      "enum": ["civic", "asg", "sfr", "unrouted"]
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}
