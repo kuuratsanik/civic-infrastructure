@@ -1,0 +1,14 @@
+# civic-infrastructure Helm chart
+apiVersion: v2
+name: civic-infrastructure
+description: Portable civic orchestrator for Kubernetes (multi-arch)
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+keywords:
+  - civic
+  - orchestrator
+  - ollama
+maintainers:
+  - name: civic-infrastructure
+home: https://github.com/

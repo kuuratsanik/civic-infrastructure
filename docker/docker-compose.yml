@@ -1,0 +1,112 @@
+# Civic Infrastructure — portable Compose stack
+# Profiles:
+#   full  — orchestrator + n8n + ollama
+#   light — orchestrator only (no local LLM / n8n)
+#
+# Usage:
+#   docker compose -f docker/docker-compose.yml --profile light up -d --build
+#   docker compose -f docker/docker-compose.yml --profile full up -d --build
+#   ./civic docker
+#   ./civic docker -LightMode
+
+name: civic-infrastructure
+
+x-logging: &default-logging
+  driver: json-file
+  options:
+    max-size: "10m"
+    max-file: "3"
+
+services:
+  orchestrator:
+    build:
+      context: ..
+      dockerfile: docker/civic/Dockerfile
+    image: civic-infrastructure/orchestrator:local
+    container_name: civic-orchestrator
+    restart: unless-stopped
+    profiles: ["light", "full"]
+    environment:
+      CIVIC_RUNTIME: docker
+      CIVIC_REPO_ROOT: /civic
+      CIVIC_DATA_ROOT: /civic/var
+      CIVIC_HEARTBEAT_SECONDS: ${CIVIC_HEARTBEAT_SECONDS:-60}
+      CIVIC_LIGHT_MODE: ${CIVIC_LIGHT_MODE:-0}
+      OLLAMA_HOST: ${OLLAMA_HOST:-http://ollama:11434}
+      TEMP: /tmp
+      TMP: /tmp
+      USERPROFILE: /home/civic
+    volumes:
+      - civic-data:/civic/var
+      - ../bus:/civic/bus:rw
+      - ../logs:/civic/host-logs:rw
+      - ../evidence:/civic/evidence:rw
+    networks:
+      - civic
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    cap_drop:
+      - ALL
+    logging: *default-logging
+    depends_on:
+      ollama:
+        condition: service_started
+        required: false
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: civic-ollama
+    restart: unless-stopped
+    profiles: ["full"]
+    volumes:
+      - ollama-data:/root/.ollama
+    networks:
+      - civic
+    # Bind loopback only when publishing; cluster/internal use service DNS
+    ports:
+      - "127.0.0.1:11434:11434"
+    security_opt:
+      - no-new-privileges:true
+    logging: *default-logging
+
+  n8n:
+    image: n8nio/n8n:1.64.3
+    container_name: civic-n8n
+    restart: unless-stopped
+    profiles: ["full"]
+    ports:
+      - "127.0.0.1:5678:5678"
+    environment:
+      N8N_BASIC_AUTH_ACTIVE: "true"
+      N8N_BASIC_AUTH_USER: ${N8N_BASIC_AUTH_USER:-civic-admin}
+      N8N_BASIC_AUTH_PASSWORD: ${N8N_BASIC_AUTH_PASSWORD:-changeme-set-in-docker-env}
+      WEBHOOK_URL: ${N8N_WEBHOOK_URL:-http://127.0.0.1:5678}
+      GENERIC_TIMEZONE: ${TZ:-UTC}
+      TZ: ${TZ:-UTC}
+      N8N_SECURE_COOKIE: "false"
+      EXECUTIONS_DATA_SAVE_ON_ERROR: all
+      EXECUTIONS_DATA_SAVE_ON_SUCCESS: all
+      EXECUTIONS_DATA_SAVE_MANUAL_EXECUTIONS: "true"
+    volumes:
+      - n8n-data:/home/node/.n8n
+      - ../logs:/civic/logs:ro
+      - ../evidence:/civic/evidence:ro
+      - ../configs:/civic/configs:ro
+    networks:
+      - civic
+    security_opt:
+      - no-new-privileges:true
+    logging: *default-logging
+
+networks:
+  civic:
+    name: civic-network
+    driver: bridge
+
+volumes:
+  civic-data:
+  ollama-data:
+  n8n-data:

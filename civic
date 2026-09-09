@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Thin POSIX wrapper around civic.ps1 / bootstrap.sh
+set -euo pipefail
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+exec "$ROOT/scripts/cross-platform/bootstrap.sh" "$@"

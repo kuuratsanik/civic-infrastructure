@@ -64,6 +64,10 @@ Thumbs.db
 logs/
 *.jsonl
 
+# Portable runtime data (host / container mounts)
+var/
+docker/.env
+
 # API Keys & Secrets (SECURITY)
 config.json
 secrets.json

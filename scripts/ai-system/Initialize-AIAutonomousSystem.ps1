@@ -34,7 +34,7 @@
 #>
 
 #Requires -Version 5.1
-#Requires -RunAsAdministrator
+# Administrator is Windows-host only; containers / Linux / macOS skip elevation.
 
 [CmdletBinding(SupportsShouldProcess)]
 param(
@@ -53,7 +53,23 @@ Write-Host @"
 ╚═══════════════════════════════════════════════════════════════╝
 "@ -ForegroundColor Cyan
 
-$WorkspaceRoot = "c:\Users\svenk\OneDrive\All_My_Projects\New folder"
+# Resolve repo root portably (Windows / Linux / macOS / container)
+$PlatformModule = Join-Path $PSScriptRoot '../../platform/Platform.psm1'
+if (Test-Path -LiteralPath $PlatformModule) {
+    Import-Module $PlatformModule -Force
+    $WorkspaceRoot = (Get-CivicRepoRoot -StartPath $PSScriptRoot)
+    $onWindows = ($env:OS -eq 'Windows_NT') -or ($IsWindows -eq $true)
+    if ($onWindows) {
+        $identity = [Security.Principal.WindowsIdentity]::GetCurrent()
+        $principal = [Security.Principal.WindowsPrincipal]::new($identity)
+        if (-not $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+            throw "Administrator privileges are required on Windows hosts."
+        }
+    }
+}
+else {
+    $WorkspaceRoot = (Resolve-Path (Join-Path $PSScriptRoot '../..')).Path
+}
 $AISystemRoot = Join-Path $WorkspaceRoot "ai-system"
 $AgentsRoot = Join-Path $AISystemRoot "agents"
 $ConfigRoot = Join-Path $AISystemRoot "config"

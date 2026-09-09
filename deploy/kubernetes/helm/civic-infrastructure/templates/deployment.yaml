@@ -1,0 +1,91 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "civic.fullname" . }}-orchestrator
+  labels:
+    {{- include "civic.labels" . | nindent 4 }}
+    app.kubernetes.io/component: orchestrator
+spec:
+  replicas: {{ .Values.orchestrator.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "civic.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "civic.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: orchestrator
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          env:
+            - name: CIVIC_RUNTIME
+              value: kubernetes
+            - name: CIVIC_REPO_ROOT
+              value: /civic
+            - name: CIVIC_DATA_ROOT
+              value: /civic/var
+            - name: CIVIC_HEARTBEAT_SECONDS
+              value: {{ .Values.orchestrator.heartbeatSeconds | quote }}
+            - name: CIVIC_LIGHT_MODE
+              value: {{ .Values.orchestrator.lightMode | ternary "1" "0" | quote }}
+            - name: OLLAMA_HOST
+              value: {{ if .Values.ollama.enabled }}http://{{ include "civic.fullname" . }}-ollama:11434{{ else }}{{ default "http://127.0.0.1:11434" .Values.orchestrator.ollamaHost }}{{ end }}
+            - name: TEMP
+              value: /tmp
+            - name: TMP
+              value: /tmp
+            - name: USERPROFILE
+              value: /home/civic
+            {{- range $k, $v := .Values.orchestrator.env }}
+            - name: {{ $k }}
+              value: {{ $v | quote }}
+            {{- end }}
+          volumeMounts:
+            - name: data
+              mountPath: /civic/var
+            - name: tmp
+              mountPath: /tmp
+          resources:
+            {{- toYaml .Values.orchestrator.resources | nindent 12 }}
+          readinessProbe:
+            exec:
+              command:
+                - pwsh
+                - -NoProfile
+                - -Command
+                - Test-Path /civic/var/state/orchestrator-state.json
+            initialDelaySeconds: 15
+            periodSeconds: 30
+      volumes:
+        - name: tmp
+          emptyDir:
+            sizeLimit: 64Mi
+        - name: data
+          {{- if .Values.persistence.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ include "civic.fullname" . }}-data
+          {{- else }}
+          emptyDir: {}
+          {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

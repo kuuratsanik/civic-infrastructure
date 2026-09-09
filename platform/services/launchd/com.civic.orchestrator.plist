@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.civic.orchestrator</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>__PWSH__</string>
+    <string>-NoProfile</string>
+    <string>-File</string>
+    <string>__REPO_ROOT__/scripts/cross-platform/Start-CivicOrchestrator.ps1</string>
+    <string>-RepoRoot</string>
+    <string>__REPO_ROOT__</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>__REPO_ROOT__</string>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>CIVIC_REPO_ROOT</key>
+    <string>__REPO_ROOT__</string>
+    <key>CIVIC_RUNTIME</key>
+    <string>host</string>
+    <key>TEMP</key>
+    <string>/tmp</string>
+    <key>TMP</key>
+    <string>/tmp</string>
+    <key>USERPROFILE</key>
+    <string>__HOME__</string>
+  </dict>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+  <key>StandardOutPath</key>
+  <string>__HOME__/Library/Logs/civic-orchestrator.log</string>
+  <key>StandardErrorPath</key>
+  <string>__HOME__/Library/Logs/civic-orchestrator.err</string>
+</dict>
+</plist>
