@@ -1,0 +1,73 @@
+{{- if .Values.n8n.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "civic.fullname" . }}-n8n
+  labels:
+    {{- include "civic.labels" . | nindent 4 }}
+    app.kubernetes.io/component: n8n
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "civic.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+      app.kubernetes.io/component: n8n
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "civic.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        app.kubernetes.io/component: n8n
+    spec:
+      containers:
+        - name: n8n
+          image: {{ .Values.n8n.image | quote }}
+          ports:
+            - containerPort: 5678
+          env:
+            - name: N8N_BASIC_AUTH_ACTIVE
+              value: "true"
+            - name: N8N_BASIC_AUTH_USER
+              value: {{ .Values.n8n.basicAuthUser | quote }}
+            - name: N8N_BASIC_AUTH_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "civic.fullname" . }}-n8n
+                  key: password
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: "1"
+              memory: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "civic.fullname" . }}-n8n
+  labels:
+    {{- include "civic.labels" . | nindent 4 }}
+    app.kubernetes.io/component: n8n
+spec:
+  type: {{ .Values.n8n.service.type }}
+  ports:
+    - port: {{ .Values.n8n.service.port }}
+      targetPort: 5678
+      name: http
+  selector:
+    app.kubernetes.io/name: {{ include "civic.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/component: n8n
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ include "civic.fullname" . }}-n8n
+  labels:
+    {{- include "civic.labels" . | nindent 4 }}
+type: Opaque
+stringData:
+  password: {{ required "n8n.basicAuthPassword is required when n8n.enabled=true" .Values.n8n.basicAuthPassword | quote }}
+{{- end }}

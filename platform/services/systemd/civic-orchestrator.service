@@ -1,0 +1,24 @@
+[Unit]
+Description=Civic Infrastructure Portable Orchestrator
+Documentation=file://__REPO_ROOT__/README.md
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=__USER__
+WorkingDirectory=__REPO_ROOT__
+Environment=CIVIC_REPO_ROOT=__REPO_ROOT__
+Environment=CIVIC_RUNTIME=host
+Environment=TEMP=/tmp
+Environment=TMP=/tmp
+Environment=USERPROFILE=/home/__USER__
+ExecStart=__PWSH__ -NoProfile -File __REPO_ROOT__/scripts/cross-platform/Start-CivicOrchestrator.ps1 -RepoRoot __REPO_ROOT__
+Restart=on-failure
+RestartSec=15
+Nice=10
+# Soft I/O priority when ionice is available via systemd
+IOSchedulingClass=idle
+
+[Install]
+WantedBy=multi-user.target

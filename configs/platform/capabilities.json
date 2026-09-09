@@ -1,0 +1,100 @@
+{
+  "version": "1.0.0",
+  "description": "Capability matrix: which civic-infrastructure features run on which platforms",
+  "platforms": {
+    "windows": {
+      "os_family": "Windows",
+      "features": {
+        "foundation_ceremonies": true,
+        "registry_ui_rituals": true,
+        "iso_build": true,
+        "ai_orchestrator": true,
+        "lineage_bus": true,
+        "consensus_kernel": true,
+        "docker_stack": true,
+        "kubernetes_deploy": true,
+        "terraform_azure": true,
+        "systemd_units": false,
+        "launchd_agents": false
+      }
+    },
+    "linux": {
+      "os_family": "Linux",
+      "features": {
+        "foundation_ceremonies": false,
+        "registry_ui_rituals": false,
+        "iso_build": false,
+        "ai_orchestrator": true,
+        "lineage_bus": true,
+        "consensus_kernel": true,
+        "docker_stack": true,
+        "kubernetes_deploy": true,
+        "terraform_azure": true,
+        "systemd_units": true,
+        "launchd_agents": false
+      }
+    },
+    "macos": {
+      "os_family": "Darwin",
+      "features": {
+        "foundation_ceremonies": false,
+        "registry_ui_rituals": false,
+        "iso_build": false,
+        "ai_orchestrator": true,
+        "lineage_bus": true,
+        "consensus_kernel": true,
+        "docker_stack": true,
+        "kubernetes_deploy": true,
+        "terraform_azure": true,
+        "systemd_units": false,
+        "launchd_agents": true
+      }
+    },
+    "docker": {
+      "os_family": "container",
+      "features": {
+        "foundation_ceremonies": false,
+        "registry_ui_rituals": false,
+        "iso_build": false,
+        "ai_orchestrator": true,
+        "lineage_bus": true,
+        "consensus_kernel": true,
+        "docker_stack": false,
+        "kubernetes_deploy": false,
+        "terraform_azure": false,
+        "systemd_units": false,
+        "launchd_agents": false
+      }
+    },
+    "kubernetes": {
+      "os_family": "container",
+      "features": {
+        "foundation_ceremonies": false,
+        "registry_ui_rituals": false,
+        "iso_build": false,
+        "ai_orchestrator": true,
+        "lineage_bus": true,
+        "consensus_kernel": true,
+        "docker_stack": false,
+        "kubernetes_deploy": false,
+        "terraform_azure": false,
+        "systemd_units": false,
+        "launchd_agents": false
+      }
+    }
+  },
+  "profiles": {
+    "host": {
+      "description": "Native host install (pwsh + optional Ollama)",
+      "entry": "bootstrap"
+    },
+    "docker": {
+      "description": "Docker Compose stack",
+      "entry": "docker compose -f docker/docker-compose.yml"
+    },
+    "kubernetes": {
+      "description": "Helm chart under deploy/kubernetes/helm/civic-infrastructure",
+      "entry": "helm upgrade --install civic deploy/kubernetes/helm/civic-infrastructure"
+    }
+  }
+}

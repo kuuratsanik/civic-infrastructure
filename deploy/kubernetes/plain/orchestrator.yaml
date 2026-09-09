@@ -1,0 +1,85 @@
+# Plain manifests (no Helm) for quick cluster smoke tests.
+# Apply: kubectl apply -k deploy/kubernetes/plain
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: civic
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: civic-orchestrator-env
+  namespace: civic
+data:
+  CIVIC_RUNTIME: kubernetes
+  CIVIC_REPO_ROOT: /civic
+  CIVIC_DATA_ROOT: /civic/var
+  CIVIC_HEARTBEAT_SECONDS: "60"
+  CIVIC_LIGHT_MODE: "1"
+  TEMP: /tmp
+  TMP: /tmp
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: civic-orchestrator
+  namespace: civic
+  labels:
+    app: civic-orchestrator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: civic-orchestrator
+  template:
+    metadata:
+      labels:
+        app: civic-orchestrator
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        fsGroup: 10001
+      containers:
+        - name: orchestrator
+          image: civic-infrastructure/orchestrator:local
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: civic-orchestrator-env
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          volumeMounts:
+            - name: data
+              mountPath: /civic/var
+            - name: tmp
+              mountPath: /tmp
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: "1"
+              memory: 1Gi
+      volumes:
+        - name: data
+          emptyDir: {}
+        - name: tmp
+          emptyDir:
+            sizeLimit: 64Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: civic-orchestrator
+  namespace: civic
+spec:
+  selector:
+    app: civic-orchestrator
+  ports:
+    - port: 8080
+      targetPort: 8080
+      name: http
