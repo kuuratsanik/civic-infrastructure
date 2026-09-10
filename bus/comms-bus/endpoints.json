@@ -1,0 +1,26 @@
+{
+  "lane": "civic",
+  "timezone": "Europe/Tallinn",
+  "github": {
+    "login": "kuuratsanik",
+    "civic_infrastructure": { "repo": "civic-infrastructure", "id": "1077280435" }
+  },
+  "linear": {
+    "team_name": "SVE",
+    "team_id": "8250b3a5-c9e5-4128-aae1-0dd416e3ad38"
+  },
+  "mail_tokens": ["AGENT-COMMS", "COMMS-BUS", "ROUTE-ME"],
+  "never_resume": ["db368212-033d-46d5-bb26-eb0b12d235a4"],
+  "automations": {
+    "comms-bus-daily": "aec7c79a-19ea-4f60-8f17-127189813f04",
+    "comms-bus-gmail": "09b2da78-6d21-4af3-906b-6c5e67cb5f24",
+    "comms-bus-outlook": "34d79415-8052-418d-8008-a8744137d0ce",
+    "comms-bus-linear": "519a697d-fcad-4cbd-a1f9-dfc0e49c422c",
+    "comms-bus-github": "98e1e8f3-24a5-4f9c-9845-fb76795658b2",
+    "comms-bus-github-any": "7d4a7277-ef79-451a-8535-18b938c4a22e",
+    "comms-bus-webhook": "3bedb9e5-1526-46f3-8086-f377805dec49"
+  },
+  "linear_issue": "SVE-5",
+  "github_issue": 2,
+  "github_branch": "comms-bus-cloud-kit"
+}
